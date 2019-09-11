@@ -22,6 +22,11 @@ function descriptiveStatistics (numbers) {
 }
 
 // TODO: Write your code here.
+function errorHandling (array) {
+  if (!Array.isArray(array)) {
+    throw TypeError('The passed argument is not an array.')
+  }
+}
 
 // Exports
 exports.descriptiveStatistics = descriptiveStatistics
