@@ -26,6 +26,8 @@ function errorHandling (array) {
   if (!Array.isArray(array)) {
     throw TypeError('The passed argument is not an array.')
   }
+  // TODO: Check if the passed argument is empty
+  // TODO: Check if the passed argument is an array only with numbers
 }
 
 // Exports
