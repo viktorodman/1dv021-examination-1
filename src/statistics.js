@@ -19,7 +19,7 @@
  */
 function descriptiveStatistics (numbers) {
   // TODO: Write your code here.
-  return maximum(numbers) + ' ' + mean(numbers) + ' ' + median(numbers)
+  return maximum(numbers) + ' ' + mean(numbers) + ' ' + median(numbers) + ' ' + minimum(numbers)
 }
 /**
  * Returns the maximum value of an array
@@ -33,8 +33,7 @@ function maximum (array) {
   // TODO: Check for the max value in the array
   errorHandling(array)
   const sortedArray = sortNumbers(array)
-
-  return sortedArray[array.length - 1]
+  return sortedArray[sortedArray.length - 1]
 }
 /**
  * Returns the mean of the sum of all numbers in the passed array
@@ -79,7 +78,9 @@ function median (array) {
   }
 }
 function minimum (array) {
-
+  errorHandling(array)
+  const sortedArray = sortNumbers(array)
+  return sortedArray[0]
 }
 // TODO: Write your code here.
 function errorHandling (array) {
