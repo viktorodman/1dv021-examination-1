@@ -93,13 +93,19 @@ function mode (array) {
       if (sortedArray[i] === sortedArray[x]) {
         // TODO: Check if the number in sortedArray[i]
         // already exists in counter
-        count += 1
+        if (counterB.includes(sortedArray[i])) {
+          count += 0
+        } else {
+          count++
+          counterB.push(sortedArray[i])
+        }
       }
     }
-    counterA[i] = count
+    counterA.push(count)
     count = 0
   }
-  console.log(counterA)
+  console.log('counterA ' + counterA)
+  console.log('counterB ' + counterB)
   // TODO: Find the 'mode' in the passed array
 }
 // TODO: Write your code here.
