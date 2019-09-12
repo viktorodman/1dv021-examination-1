@@ -42,7 +42,7 @@ function mean (array) {
   // TODO: Check the mean value of the array
   errorHandling(array)
   const sum = array.reduce((acc, numbers) => acc + numbers, 0)
-  return sum
+  return sum / array.length
 }
 
 // TODO: Write your code here.
