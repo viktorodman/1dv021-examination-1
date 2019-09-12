@@ -27,6 +27,9 @@ function errorHandling (array) {
     throw TypeError('The passed argument is not an array.')
   }
   // TODO: Check if the passed argument is empty
+  if (array.length === 0) {
+    throw Error('The passed array contains no elements.')
+  }
   // TODO: Check if the passed argument is an array only with numbers
 }
 
