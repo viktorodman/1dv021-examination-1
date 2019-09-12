@@ -57,8 +57,10 @@ function median (array) {
   // https://stackoverflow.com/questions/20904368/javascript-finding-the-most-middle-value-in-an-array
   const oddMedian = sortedArray[Math.round((sortedArray.length - 1) / 2)]
   const evenMedian = []
+  const firstMiddleNumber = Math.round(((sortedArray.length) / 2) - 1)
+  const secondMiddleNumber = Math.round((sortedArray.length / 2))
   // puts the two middle numbers of sortedArray into evenMedian
-  evenMedian.push(sortedArray[Math.round(((sortedArray.length) / 2) - 1)], sortedArray[Math.round((sortedArray.length / 2))])
+  evenMedian.push(sortedArray[firstMiddleNumber], sortedArray[secondMiddleNumber])
   // return the number in middle of the array
   if (sortedArray.length % 2 !== 0) {
     return oddMedian
