@@ -58,14 +58,16 @@ function median (array) {
   console.log(sortedArray)
   // used the example in the answer on how to find the middle of an odd array
   // https://stackoverflow.com/questions/20904368/javascript-finding-the-most-middle-value-in-an-array
-  const oddMedian = Math.round((sortedArray.length - 1) / 2)
+  const oddMedian = sortedArray[Math.round((sortedArray.length - 1) / 2)]
+  console.log('Odd median = ' + oddMedian)
   const evenMedian = []
-  // pushes the two middle numbers into the evenMedian array
-  evenMedian.push(Math.round(((sortedArray.length) / 2) - 1), Math.round((sortedArray.length / 2)))
+  // puts the two middle numbers of sortedArray into evenMedian
+  evenMedian.push(sortedArray[Math.round(((sortedArray.length) / 2) - 1)], sortedArray[Math.round((sortedArray.length / 2))])
 
   // TODO: If the the amount of numbers in the array are odd
   // return the number in middle of the array
   if (sortedArray.length % 2 !== 0) {
+    console.log('Odd median = ' + oddMedian)
     return oddMedian
   // IF 'even' Call the mean function with the two middle numbers.
   } else {
