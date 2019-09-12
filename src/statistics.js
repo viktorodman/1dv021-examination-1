@@ -82,6 +82,10 @@ function minimum (array) {
   const sortedArray = sortNumbers(array)
   return sortedArray[0]
 }
+function mode (array) {
+  // TODO: Sort numbers
+  // TODO: Find the 'mode' in the passed array
+}
 // TODO: Write your code here.
 function errorHandling (array) {
   if (!Array.isArray(array)) {
