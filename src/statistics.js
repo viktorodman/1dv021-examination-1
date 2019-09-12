@@ -21,6 +21,10 @@ function descriptiveStatistics (numbers) {
   // TODO: Write your code here.
 }
 
+function maximum (array) {
+  // TODO: Check for the max value in the array
+}
+
 // TODO: Write your code here.
 function errorHandling (array) {
   if (!Array.isArray(array)) {
@@ -35,7 +39,7 @@ function errorHandling (array) {
 
 // Exports
 exports.descriptiveStatistics = descriptiveStatistics
-exports.maximum = undefined
+exports.maximum = maximum
 exports.mean = undefined
 exports.median = undefined
 exports.minimum = undefined
