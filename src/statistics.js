@@ -84,6 +84,13 @@ function minimum (array) {
 }
 function mode (array) {
   // TODO: Sort numbers
+  const sortedArray = sortNumbers(array)
+  const counter = []
+  for (let i = 0; i < sortedArray.length; i++) {
+    for (let x = 0; x < sortedArray.length; x++) {
+
+    }
+  }
   // TODO: Find the 'mode' in the passed array
 }
 // TODO: Write your code here.
@@ -110,6 +117,6 @@ exports.maximum = maximum
 exports.mean = mean
 exports.median = median
 exports.minimum = minimum
-exports.mode = undefined
+exports.mode = mode
 exports.range = undefined
 exports.standardDeviation = undefined
