@@ -19,10 +19,16 @@
  */
 function descriptiveStatistics (numbers) {
   // TODO: Write your code here.
+  return maximum(numbers)
 }
 
 function maximum (array) {
   // TODO: Check for the max value in the array
+  errorHandling(array)
+  const sortedArray = array.sort(function (a, b) {
+    return b - a
+  })
+  return sortedArray[0]
 }
 
 // TODO: Write your code here.
