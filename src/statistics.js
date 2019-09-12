@@ -85,7 +85,8 @@ function minimum (array) {
 function mode (array) {
   // TODO: Sort numbers
   const sortedArray = sortNumbers(array)
-  const counter = []
+  const counterA = []
+  const counterB = []
   let count = 0
   for (let i = 0; i < sortedArray.length; i++) {
     for (let x = 0; x < sortedArray.length; x++) {
@@ -95,10 +96,10 @@ function mode (array) {
         count += 1
       }
     }
-    counter[i] = count
+    counterA[i] = count
     count = 0
   }
-  console.log(counter)
+  console.log(counterA)
   // TODO: Find the 'mode' in the passed array
 }
 // TODO: Write your code here.
