@@ -54,7 +54,7 @@ function median (array) {
   // TODO: Check for errors
   errorHandling(array)
   // TODO: Sort the numbers in the array
-
+  const sortedArray = sortNumbers(array)
   // TODO: If the the amount of numbers in the array are odd
   // take the number in middle of the array
   // IF 'even' Call the mean function with the two middle numbers.
@@ -82,7 +82,7 @@ function sortNumbers (array) {
 exports.descriptiveStatistics = descriptiveStatistics
 exports.maximum = maximum
 exports.mean = mean
-exports.median = undefined
+exports.median = median
 exports.minimum = undefined
 exports.mode = undefined
 exports.range = undefined
