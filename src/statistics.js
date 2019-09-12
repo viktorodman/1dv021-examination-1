@@ -32,10 +32,9 @@ function descriptiveStatistics (numbers) {
 function maximum (array) {
   // TODO: Check for the max value in the array
   errorHandling(array)
-  const sortedArray = array.sort(function (a, b) {
-    return b - a
-  })
-  return sortedArray[0]
+  const sortedArray = sortNumbers(array)
+
+  return sortedArray[array.length - 1]
 }
 /**
  * Returns the mean of the sum of all numbers in the passed array
@@ -73,7 +72,10 @@ function errorHandling (array) {
   // TODO: Check if the passed argument is an array only with numbers
 }
 function sortNumbers (array) {
-
+  const sortedArray = array.sort(function (a, b) {
+    return a - b
+  })
+  return sortedArray
 }
 
 // Exports
