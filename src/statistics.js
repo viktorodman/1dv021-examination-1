@@ -86,7 +86,7 @@ function mode (array) {
   // TODO: Sort numbers
   const sortedArray = sortNumbers(array)
   const counter = []
-  const count = 0
+  let count = 0
   for (let i = 0; i < sortedArray.length; i++) {
     for (let x = 0; x < sortedArray.length; x++) {
       if (sortedArray[i] === sortedArray[x]) {
