@@ -78,6 +78,9 @@ function median (array) {
     return mean(evenMedian)
   }
 }
+function minimum (array) {
+
+}
 // TODO: Write your code here.
 function errorHandling (array) {
   if (!Array.isArray(array)) {
@@ -101,7 +104,7 @@ exports.descriptiveStatistics = descriptiveStatistics
 exports.maximum = maximum
 exports.mean = mean
 exports.median = median
-exports.minimum = undefined
+exports.minimum = minimum
 exports.mode = undefined
 exports.range = undefined
 exports.standardDeviation = undefined
