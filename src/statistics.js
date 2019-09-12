@@ -90,6 +90,8 @@ function mode (array) {
   for (let i = 0; i < sortedArray.length; i++) {
     for (let x = 0; x < sortedArray.length; x++) {
       if (sortedArray[i] === sortedArray[x]) {
+        // TODO: Check if the number in sortedArray[i]
+        // already exists in counter
         count += 1
       }
     }
