@@ -27,7 +27,7 @@ function descriptiveStatistics (numbers) {
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
- * @returns {sortedArray[0]} The maximum value of the passed array
+ * @returns {number} The maximum value of the passed array
  */
 function maximum (array) {
   // TODO: Check for the max value in the array
@@ -43,7 +43,7 @@ function maximum (array) {
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
- * @returns {sum / array.length} Returns the mean of the sum of the array
+ * @returns {number} Returns the mean of the sum of the array
  */
 function mean (array) {
   // TODO: Check the mean value of the array
