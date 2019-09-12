@@ -52,6 +52,10 @@ function mean (array) {
   return sum / array.length
 }
 function median (array) {
+  // TODO: Sort the numbers in the array
+  // TODO: If the the amount of numbers in the array are odd
+  // take the number in middle of the array
+  // IF 'even' Call the mean function with the two middle numbers.
   // TODO: Return the median of the array
 }
 // TODO: Write your code here.
