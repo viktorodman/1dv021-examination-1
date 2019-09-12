@@ -52,7 +52,10 @@ function mean (array) {
   return sum / array.length
 }
 function median (array) {
+  // TODO: Check for errors
+  errorHandling(array)
   // TODO: Sort the numbers in the array
+
   // TODO: If the the amount of numbers in the array are odd
   // take the number in middle of the array
   // IF 'even' Call the mean function with the two middle numbers.
@@ -68,6 +71,9 @@ function errorHandling (array) {
     throw Error('The passed array contains no elements.')
   }
   // TODO: Check if the passed argument is an array only with numbers
+}
+function sortNumbers (array) {
+
 }
 
 // Exports
