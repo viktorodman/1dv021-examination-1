@@ -38,6 +38,10 @@ function maximum (array) {
   return sortedArray[0]
 }
 
+function mean (array) {
+  // TODO: Check the mean value of the array
+}
+
 // TODO: Write your code here.
 function errorHandling (array) {
   if (!Array.isArray(array)) {
