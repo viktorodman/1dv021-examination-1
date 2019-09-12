@@ -21,7 +21,14 @@ function descriptiveStatistics (numbers) {
   // TODO: Write your code here.
   return maximum(numbers)
 }
-
+/**
+ * Returns the maximum value of an array
+ * @param {array[]} array The array .. .. ..
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {sortedArray[0]} The maximum value of the passed array
+ */
 function maximum (array) {
   // TODO: Check for the max value in the array
   errorHandling(array)
