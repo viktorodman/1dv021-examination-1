@@ -37,7 +37,14 @@ function maximum (array) {
   })
   return sortedArray[0]
 }
-
+/**
+ *
+ * @param {array[]} array An array of numbers
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {sum / array.length} Returns the mean of the sum of the array
+ */
 function mean (array) {
   // TODO: Check the mean value of the array
   errorHandling(array)
