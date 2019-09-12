@@ -60,12 +60,11 @@ function median (array) {
   const oddMedian = Math.round((sortedArray.length - 1) / 2)
   // TODO: If the the amount of numbers in the array are odd
   /* if (sortedArray.length % 2 !== 0) {
-
   } */
-  console.log(oddMedian)
   // take the number in middle of the array
   // IF 'even' Call the mean function with the two middle numbers.
   // TODO: Return the median of the array
+  return oddMedian
 }
 // TODO: Write your code here.
 function errorHandling (array) {
