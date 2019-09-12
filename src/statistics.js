@@ -42,7 +42,7 @@ function maximum (array) {
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
- * @returns {number} Returns the mean of the sum of the array
+ * @returns {number} Returns the mean of the array
  */
 function mean (array) {
   // TODO: Check the mean value of the array
@@ -50,6 +50,15 @@ function mean (array) {
   const sum = array.reduce((acc, numbers) => acc + numbers, 0)
   return sum / array.length
 }
+
+/**
+ *
+ * @param {array[]} array An array of numbers
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @throws {number} Returns the median of the array
+ */
 function median (array) {
   errorHandling(array)
   const sortedArray = sortNumbers(array)
