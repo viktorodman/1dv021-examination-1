@@ -116,6 +116,11 @@ function range (array) {
   return (maximum(array)) - (minimum(array))
 }
 function standardDeviation () {
+  // TODO: Check the mean of the array
+  // TODO: Check the range for each number in the array against the mean of the array
+  // TODO: Square all numbers
+  // TODO: Check the mean of all numbers
+  // TODO: Check the square root of the sum
   return 'hejhej'
 }
 // TODO: Write your code here.
