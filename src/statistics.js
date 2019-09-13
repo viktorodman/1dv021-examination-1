@@ -123,11 +123,12 @@ function standardDeviation (array) {
   const rangeDev = []
   // TODO: Check the range for each number in the array against the mean of the array
   for (const num of array) {
-    rangeDev.push(range(tempRangeDev.push(num, meanDev)))
+    tempRangeDev.push(num, meanDev)
+
+    rangeDev.push(range(tempRangeDev))
     tempRangeDev = []
   }
   console.log(rangeDev)
-  // console.log(rangeDev)
   // TODO: Square all numbers
   // TODO: Check the mean of all numbers
   // TODO: Check the square root of the sum
