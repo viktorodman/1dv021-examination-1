@@ -18,7 +18,8 @@
  * @returns {{maximum: number, mean: number, median: number, minimum: number, mode: number[], range: number, standardDeviation: number}}
  */
 function descriptiveStatistics (numbers) {
-  errorHandling(numbers)
+  /* errorHandling(numbers)
+  notJustNumbers(numbers) */
   // TODO: Write your code here.
   /* return 'maximum = ' + maximum(numbers) +
   ' ' + 'mean = ' + mean(numbers) +
@@ -40,11 +41,11 @@ function descriptiveStatistics (numbers) {
 }
 /**
  * Returns the maximum value of an array
- * @param {array[]} array The array .. .. ..
+ * @param {array[]} array An array of numbers.
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
- * @returns {number} The maximum value of the passed array
+ * @returns {number} The maximum value of the passed array.
  */
 function maximum (array) {
   // TODO: Check for the max value in the array
@@ -55,12 +56,12 @@ function maximum (array) {
   return sortedArray[sortedArray.length - 1]
 }
 /**
- * Returns the mean of the sum of all numbers in the passed array
+ * Returns the mean of the numbers in the passed array
  * @param {array[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
- * @returns {number} Returns the mean of the array
+ * @returns {number} Returns the mean of the passed array.
  */
 function mean (array) {
   // TODO: Check the mean value of the array
@@ -71,12 +72,12 @@ function mean (array) {
 }
 
 /**
- *
+ * Returns the median of the numbers in the passed array
  * @param {array[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
- * @throws {number} Returns the median of the array
+ * @returns {number} Returns the median of the passed array.
  */
 function median (array) {
   notJustNumbers(array)
@@ -99,7 +100,14 @@ function median (array) {
     return mean(evenMedian)
   }
 }
-// TODO: ADD JSDOC-COMMENTS
+/**
+ *Returns the minimum of the numbers in the passed array.
+ * @param {array[]} array An array of numbers
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {number} Returns the minimum of the passed array.
+ */
 function minimum (array) {
   notJustNumbers(array)
   errorHandling(array)
@@ -107,14 +115,20 @@ function minimum (array) {
   const sortedArray = sortNumbers(arrayCopy)
   return sortedArray[0]
 }
-// TODO: ADD JSDOC-COMMENTS
+/**
+ *Returns an array of the mode of the numbers in the passed array.
+ * @param {array[]} array An array of numbers
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {array[]} Returns the mode of the passed array.
+ */
 // CLEAN UP
 function mode (array) {
   notJustNumbers(array)
   errorHandling(array)
   const arrayCopy = array.slice()
   const occurrences = occurrencesInArray(arrayCopy)
-  // TODO:
   // const sortedArray = sortNumbers(array)
   const arrayMode = []
   occurrences.sort(function (a, b) {
@@ -130,11 +144,26 @@ function mode (array) {
   // console.log(arrayMode)
   return arrayMode
 }
-// TODO: ADD JSDOC-COMMENTS
+/**
+ *Returns the range of the numbers in the passed array.
+ * @param {array[]} array An array of numbers
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {number} Returns the range of the passed array.
+ */
 function range (array) {
   errorHandling(array)
   return (maximum(array)) - (minimum(array))
 }
+/**
+ *Returns the standard deviation of the numbers in the passed array.
+ * @param {array[]} array An array of numbers
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {number} Returns the standard deviation of the passed array.
+ */
 function standardDeviation (array) {
   errorHandling(array)
   // TODO: Check the mean of the array
@@ -163,8 +192,14 @@ function standardDeviation (array) {
   // console.log(deviation)
   return deviation
 }
-// TODO: Write your code here.
-// TODO: ADD JSDOC-COMMENTS
+
+/**
+ *Throws TypeError if the passed the passed argument is not an array
+ *or if the passed array contains no elements.
+ * @param {array[]} array An array of numbers
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {TypeError} The passed array contains not just numbers.
+ */
 function errorHandling (array) {
   if (!Array.isArray(array)) {
     throw TypeError('The passed argument is not an array.')
@@ -177,6 +212,11 @@ function errorHandling (array) {
 
   // TODO: Check if the passed argument is an array only with numbers
 }
+/**
+ *Throws error if the passed array contains not just numbers.
+ * @param {array[]} array An array of numbers
+ * @throws {TypeError} The passed array contains not just numbers.
+ */
 function notJustNumbers (array) {
   for (let i = 0; i < array.length; i++) {
     if (typeof (array[i]) !== 'number') {
@@ -185,15 +225,30 @@ function notJustNumbers (array) {
   }
 }
 
-// TODO: ADD JSDOC-COMMENTS
+/**
+ *Returns a sorted version of the passed array. Sorted from min to max.
+ * @param {array[]} array An array of numbers
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {array[]} returns a sorted version of the passed array
+ */
 function sortNumbers (array) {
   errorHandling(array)
+  notJustNumbers(array)
   const sortedArray = array.sort(function (a, b) {
     return a - b
   })
   return sortedArray
 }
-// TODO: ADD JSDOC-COMMENTS
+/**
+ *Returns a version of the passed array but the elemnts cant have duplicates.
+ * @param {array[]} array An array of numbers
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {array[]} Returns the passed array but with no duplicates.
+ */
 function numbersInArray (array) {
   errorHandling(array)
   // TODO: Checks what numbers is the passed array
@@ -206,7 +261,16 @@ function numbersInArray (array) {
   }
   return sortNumbers(result)
 }
-// TODO: ADD JSDOC-COMMENTS
+/**
+ *Returns an array with multiple objects.
+ *The objects show how many times a certain number in
+ *the passed array occurs.
+ * @param {array[]} array An array of numbers
+ * @throws {TypeError} The passed argument is not an array.
+ * @throws {Error} The passed array contains no elements.
+ * @throws {TypeError} The passed array contains not just numbers.
+ * @returns {array[{}]} Returns the occurrence of the numbers in the passed array
+ */
 function occurrencesInArray (array) {
   errorHandling(array)
   const result = []
