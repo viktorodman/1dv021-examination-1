@@ -19,7 +19,12 @@
  */
 function descriptiveStatistics (numbers) {
   // TODO: Write your code here.
-  return maximum(numbers) + ' ' + mean(numbers) + ' ' + median(numbers) + ' ' + minimum(numbers) + ' ' + 'mode' + mode(numbers)
+  return 'maximum = ' + maximum(numbers) +
+  ' ' + 'mean = ' + mean(numbers) +
+  ' ' + 'median = ' + median(numbers) +
+  ' ' + 'minimum = ' + minimum(numbers) +
+  ' ' + 'mode = ' + mode(numbers) +
+  ' ' + 'range = ' + range(numbers)
 }
 /**
  * Returns the maximum value of an array
@@ -77,12 +82,16 @@ function median (array) {
     return mean(evenMedian)
   }
 }
+// TODO: ADD JSDOC-COMMENTS
 function minimum (array) {
   errorHandling(array)
   const sortedArray = sortNumbers(array)
   return sortedArray[0]
 }
+// TODO: ADD JSDOC-COMMENTS
+// CLEAN UP
 function mode (array) {
+  errorHandling(array)
   const occurrences = occurrencesInArray(array)
   // TODO:
   // const sortedArray = sortNumbers(array)
@@ -100,7 +109,11 @@ function mode (array) {
   console.log(arrayMode)
   return arrayMode
 }
+function range (array) {
+  return ('hejhej')
+}
 // TODO: Write your code here.
+// TODO: ADD JSDOC-COMMENTS
 function errorHandling (array) {
   if (!Array.isArray(array)) {
     throw TypeError('The passed argument is not an array.')
@@ -111,12 +124,14 @@ function errorHandling (array) {
   }
   // TODO: Check if the passed argument is an array only with numbers
 }
+// TODO: ADD JSDOC-COMMENTS
 function sortNumbers (array) {
   const sortedArray = array.sort(function (a, b) {
     return a - b
   })
   return sortedArray
 }
+// TODO: ADD JSDOC-COMMENTS
 function numbersInArray (array) {
   // TODO: Checks what numbers is the passed array
   // Only one of each number will be returned
@@ -128,6 +143,7 @@ function numbersInArray (array) {
   }
   return sortNumbers(result)
 }
+// TODO: ADD JSDOC-COMMENTS
 function occurrencesInArray (array) {
   const result = []
   let count = 0
@@ -139,8 +155,8 @@ function occurrencesInArray (array) {
       if (compare[i] === sortedArray[x]) {
         count++
       }
-      // and push the result of have many times number occurs into result
     }
+    // and push the result of have many times number occurs into result
     result.push({
       number: compare[i],
       occurrences: count
@@ -157,5 +173,5 @@ exports.mean = mean
 exports.median = median
 exports.minimum = minimum
 exports.mode = mode
-exports.range = undefined
+exports.range = range
 exports.standardDeviation = undefined
