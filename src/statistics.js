@@ -131,6 +131,9 @@ function numbersInArray (array) {
   }
   return sortNumbers(result)
 }
+function occurrencesInArray (array) {
+
+}
 
 // Exports
 exports.descriptiveStatistics = descriptiveStatistics
