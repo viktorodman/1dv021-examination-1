@@ -90,9 +90,11 @@ function mode (array) {
   occurrences.sort(function (a, b) {
     return b.occurrences - a.occurrences
   })
-
+  const newArray = occurrences.filter(function (numbers) {
+    return numbers.occurrences === occurrences[0].occurrences
+  })
   // console.log(sortedArray)
-  console.log(occurrences)
+  console.log(newArray)
 }
 // TODO: Write your code here.
 function errorHandling (array) {
