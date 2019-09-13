@@ -48,6 +48,7 @@ function descriptiveStatistics (numbers) {
  */
 function maximum (array) {
   // TODO: Check for the max value in the array
+  notJustNumbers(array)
   errorHandling(array)
   const arrayCopy = array.slice()
   const sortedArray = sortNumbers(arrayCopy)
@@ -63,6 +64,7 @@ function maximum (array) {
  */
 function mean (array) {
   // TODO: Check the mean value of the array
+  notJustNumbers(array)
   errorHandling(array)
   const sum = array.reduce((acc, numbers) => acc + numbers, 0)
   return sum / array.length
@@ -77,8 +79,10 @@ function mean (array) {
  * @throws {number} Returns the median of the array
  */
 function median (array) {
+  notJustNumbers(array)
   errorHandling(array)
-  const sortedArray = sortNumbers(array)
+  const arrayCopy = array.slice()
+  const sortedArray = sortNumbers(arrayCopy)
   // used the example in the answer on how to find the middle of an odd array
   // https://stackoverflow.com/questions/20904368/javascript-finding-the-most-middle-value-in-an-array
   const oddMedian = sortedArray[Math.round((sortedArray.length - 1) / 2)]
@@ -97,6 +101,7 @@ function median (array) {
 }
 // TODO: ADD JSDOC-COMMENTS
 function minimum (array) {
+  notJustNumbers(array)
   errorHandling(array)
   const arrayCopy = array.slice()
   const sortedArray = sortNumbers(arrayCopy)
@@ -105,8 +110,10 @@ function minimum (array) {
 // TODO: ADD JSDOC-COMMENTS
 // CLEAN UP
 function mode (array) {
+  notJustNumbers(array)
   errorHandling(array)
-  const occurrences = occurrencesInArray(array)
+  const arrayCopy = array.slice()
+  const occurrences = occurrencesInArray(arrayCopy)
   // TODO:
   // const sortedArray = sortNumbers(array)
   const arrayMode = []
@@ -162,17 +169,22 @@ function errorHandling (array) {
   if (!Array.isArray(array)) {
     throw TypeError('The passed argument is not an array.')
   }
-  // TODO: Check if the passed argument is empty
   if (array.length === 0) {
     throw Error('The passed array contains no elements.')
   }
+
+  // TODO: Check if the passed argument is empty
+
   // TODO: Check if the passed argument is an array only with numbers
-  for (const number of array) {
-    if (isNaN(number)) {
-      TypeError('The passed array contains not just numbers.')
+}
+function notJustNumbers (array) {
+  for (let i = 0; i < array.length; i++) {
+    if (typeof (array[i]) !== 'number') {
+      throw TypeError('The passed array contains not just numbers.')
     }
   }
 }
+
 // TODO: ADD JSDOC-COMMENTS
 function sortNumbers (array) {
   errorHandling(array)
