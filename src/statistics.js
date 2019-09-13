@@ -49,7 +49,8 @@ function descriptiveStatistics (numbers) {
 function maximum (array) {
   // TODO: Check for the max value in the array
   errorHandling(array)
-  const sortedArray = sortNumbers(array)
+  const arrayCopy = array.slice()
+  const sortedArray = sortNumbers(arrayCopy)
   return sortedArray[sortedArray.length - 1]
 }
 /**
@@ -97,7 +98,8 @@ function median (array) {
 // TODO: ADD JSDOC-COMMENTS
 function minimum (array) {
   errorHandling(array)
-  const sortedArray = sortNumbers(array)
+  const arrayCopy = array.slice()
+  const sortedArray = sortNumbers(arrayCopy)
   return sortedArray[0]
 }
 // TODO: ADD JSDOC-COMMENTS
@@ -166,7 +168,7 @@ function errorHandling (array) {
   }
   // TODO: Check if the passed argument is an array only with numbers
   for (const number of array) {
-    if (typeof (number) !== 'number') {
+    if (isNaN(number)) {
       TypeError('The passed array contains not just numbers.')
     }
   }
