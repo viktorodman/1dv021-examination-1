@@ -109,8 +109,10 @@ function mode (array) {
   console.log(arrayMode)
   return arrayMode
 }
+// TODO: ADD JSDOC-COMMENTS
 function range (array) {
-  return ('hejhej')
+  errorHandling(array)
+  return (maximum(array)) - (minimum(array))
 }
 // TODO: Write your code here.
 // TODO: ADD JSDOC-COMMENTS
@@ -151,7 +153,6 @@ function occurrencesInArray (array) {
   const compare = numbersInArray(array)
   for (let i = 0; i < compare.length; i++) {
     for (let x = 0; x < sortedArray.length; x++) {
-      // TODO: Check every number in compare to every number in sortedArray
       if (compare[i] === sortedArray[x]) {
         count++
       }
