@@ -18,6 +18,7 @@
  * @returns {{maximum: number, mean: number, median: number, minimum: number, mode: number[], range: number, standardDeviation: number}}
  */
 function descriptiveStatistics (numbers) {
+  errorHandling(numbers)
   // TODO: Write your code here.
   /* return 'maximum = ' + maximum(numbers) +
   ' ' + 'mean = ' + mean(numbers) +
@@ -164,9 +165,15 @@ function errorHandling (array) {
     throw Error('The passed array contains no elements.')
   }
   // TODO: Check if the passed argument is an array only with numbers
+  for (const number of array) {
+    if (typeof (number) !== 'number') {
+      TypeError('The passed array contains not just numbers.')
+    }
+  }
 }
 // TODO: ADD JSDOC-COMMENTS
 function sortNumbers (array) {
+  errorHandling(array)
   const sortedArray = array.sort(function (a, b) {
     return a - b
   })
@@ -174,6 +181,7 @@ function sortNumbers (array) {
 }
 // TODO: ADD JSDOC-COMMENTS
 function numbersInArray (array) {
+  errorHandling(array)
   // TODO: Checks what numbers is the passed array
   // Only one of each number will be returned
   const result = []
@@ -186,6 +194,7 @@ function numbersInArray (array) {
 }
 // TODO: ADD JSDOC-COMMENTS
 function occurrencesInArray (array) {
+  errorHandling(array)
   const result = []
   let count = 0
   const sortedArray = sortNumbers(array)
