@@ -121,6 +121,7 @@ function standardDeviation (array) {
   const meanDev = mean(array)
   let tempRangeDev = []
   const rangeDev = []
+  const squareDev = []
   // TODO: Check the range for each number in the array against the mean of the array
   for (const num of array) {
     tempRangeDev.push(num, meanDev)
@@ -130,6 +131,10 @@ function standardDeviation (array) {
   }
   console.log(rangeDev)
   // TODO: Square all numbers
+  for (const num of rangeDev) {
+    squareDev.push(Math.pow(num, 2))
+  }
+  console.log(squareDev)
   // TODO: Check the mean of all numbers
   // TODO: Check the square root of the sum
   return 'hejhej'
