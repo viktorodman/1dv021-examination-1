@@ -24,7 +24,8 @@ function descriptiveStatistics (numbers) {
   ' ' + 'median = ' + median(numbers) +
   ' ' + 'minimum = ' + minimum(numbers) +
   ' ' + 'mode = ' + mode(numbers) +
-  ' ' + 'range = ' + range(numbers)
+  ' ' + 'range = ' + range(numbers) +
+  ' ' + 'standardDeviation = ' + standardDeviation(numbers)
 }
 /**
  * Returns the maximum value of an array
@@ -114,6 +115,9 @@ function range (array) {
   errorHandling(array)
   return (maximum(array)) - (minimum(array))
 }
+function standardDeviation () {
+  return 'hejhej'
+}
 // TODO: Write your code here.
 // TODO: ADD JSDOC-COMMENTS
 function errorHandling (array) {
@@ -175,4 +179,4 @@ exports.median = median
 exports.minimum = minimum
 exports.mode = mode
 exports.range = range
-exports.standardDeviation = undefined
+exports.standardDeviation = standardDeviation
