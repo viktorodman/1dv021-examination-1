@@ -136,6 +136,8 @@ function standardDeviation (array) {
   }
   console.log(squareDev)
   // TODO: Check the mean of all numbers
+  const newMean = mean(squareDev)
+  console.log(newMean)
   // TODO: Check the square root of the sum
   return 'hejhej'
 }
