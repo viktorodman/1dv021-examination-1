@@ -86,14 +86,22 @@ function mode (array) {
   // TODO: Sort numbers
   // TODO: Find the 'mode' in the passed array
   const result = []
+  let count = 0
   const sortedArray = sortNumbers(array)
   const compare = numbersInArray(array)
+  console.log(sortedArray)
   for (let i = 0; i < compare.length; i++) {
-    for (let x = 0; x < sortedArray.length; i++) {
+    for (let x = 0; x < sortedArray.length; x++) {
       // TODO: Check every number in compare to every number in sortedArray
+      if (compare[i] === sortedArray[x]) {
+        count++
+      }
       // and push the result of have many times number occurs into result
     }
+    result.push(count)
+    count = 0
   }
+  console.log(result)
 }
 // TODO: Write your code here.
 function errorHandling (array) {
