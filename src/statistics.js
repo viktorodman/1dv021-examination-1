@@ -107,7 +107,7 @@ function mode (array) {
     arrayMode.push(numbers.number)
   }
   // console.log(sortedArray)
-  console.log(arrayMode)
+  // console.log(arrayMode)
   return arrayMode
 }
 // TODO: ADD JSDOC-COMMENTS
@@ -115,9 +115,19 @@ function range (array) {
   errorHandling(array)
   return (maximum(array)) - (minimum(array))
 }
-function standardDeviation () {
+function standardDeviation (array) {
+  errorHandling(array)
   // TODO: Check the mean of the array
+  const meanDev = mean(array)
+  let tempRangeDev = []
+  const rangeDev = []
   // TODO: Check the range for each number in the array against the mean of the array
+  for (const num of array) {
+    rangeDev.push(range(tempRangeDev.push(num, meanDev)))
+    tempRangeDev = []
+  }
+  console.log(rangeDev)
+  // console.log(rangeDev)
   // TODO: Square all numbers
   // TODO: Check the mean of all numbers
   // TODO: Check the square root of the sum
