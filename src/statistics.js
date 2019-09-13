@@ -19,7 +19,7 @@
  */
 function descriptiveStatistics (numbers) {
   // TODO: Write your code here.
-  return maximum(numbers) + ' ' + mean(numbers) + ' ' + median(numbers) + ' ' + minimum(numbers) + ' ' + mode(numbers)
+  return maximum(numbers) + ' ' + mean(numbers) + ' ' + median(numbers) + ' ' + minimum(numbers) + ' ' + 'mode' + mode(numbers)
 }
 /**
  * Returns the maximum value of an array
@@ -86,15 +86,19 @@ function mode (array) {
   const occurrences = occurrencesInArray(array)
   // TODO:
   // const sortedArray = sortNumbers(array)
-
+  const arrayMode = []
   occurrences.sort(function (a, b) {
     return b.occurrences - a.occurrences
   })
   const newArray = occurrences.filter(function (numbers) {
     return numbers.occurrences === occurrences[0].occurrences
   })
+  for (const numbers of newArray) {
+    arrayMode.push(numbers.number)
+  }
   // console.log(sortedArray)
-  console.log(newArray)
+  console.log(arrayMode)
+  return arrayMode
 }
 // TODO: Write your code here.
 function errorHandling (array) {
