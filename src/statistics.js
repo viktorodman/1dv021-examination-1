@@ -85,7 +85,15 @@ function minimum (array) {
 function mode (array) {
   // TODO: Sort numbers
   // TODO: Find the 'mode' in the passed array
-  numbersInArray(array)
+  const result = []
+  const sortedArray = sortNumbers(array)
+  const compare = numbersInArray(array)
+  for (let i = 0; i < compare.length; i++) {
+    for (let x = 0; x < sortedArray.length; i++) {
+      // TODO: Check every number in compare to every number in sortedArray
+      // and push the result of have many times number occurs into result
+    }
+  }
 }
 // TODO: Write your code here.
 function errorHandling (array) {
@@ -113,7 +121,7 @@ function numbersInArray (array) {
       result.push(array[i])
     }
   }
-  console.log(result)
+  return sortNumbers(result)
 }
 
 // Exports
