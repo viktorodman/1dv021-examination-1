@@ -83,7 +83,12 @@ function minimum (array) {
   return sortedArray[0]
 }
 function mode (array) {
-  occurrencesInArray(array)
+  const occurrences = occurrencesInArray(array)
+  // TODO:
+  const sortedArray = sortNumbers(array)
+
+  console.log(sortedArray)
+  console.log(occurrences)
 }
 // TODO: Write your code here.
 function errorHandling (array) {
@@ -118,7 +123,6 @@ function occurrencesInArray (array) {
   let count = 0
   const sortedArray = sortNumbers(array)
   const compare = numbersInArray(array)
-  console.log(sortedArray)
   for (let i = 0; i < compare.length; i++) {
     for (let x = 0; x < sortedArray.length; x++) {
       // TODO: Check every number in compare to every number in sortedArray
@@ -127,10 +131,10 @@ function occurrencesInArray (array) {
       }
       // and push the result of have many times number occurs into result
     }
-    result.push(count)
+    result.push({ [compare[i]]: count })
     count = 0
   }
-  console.log(result)
+  return result
 }
 
 // Exports
