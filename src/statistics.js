@@ -19,13 +19,23 @@
  */
 function descriptiveStatistics (numbers) {
   // TODO: Write your code here.
-  return 'maximum = ' + maximum(numbers) +
+  /* return 'maximum = ' + maximum(numbers) +
   ' ' + 'mean = ' + mean(numbers) +
   ' ' + 'median = ' + median(numbers) +
   ' ' + 'minimum = ' + minimum(numbers) +
   ' ' + 'mode = ' + mode(numbers) +
   ' ' + 'range = ' + range(numbers) +
-  ' ' + 'standardDeviation = ' + standardDeviation(numbers)
+  ' ' + 'standardDeviation = ' + standardDeviation(numbers) */
+  const descriptiveObject = {
+    maximum: maximum(numbers),
+    mean: mean(numbers),
+    median: median(numbers),
+    minimum: minimum(numbers),
+    mode: mode(numbers),
+    range: range(numbers),
+    standardDeviation: standardDeviation(numbers)
+  }
+  return descriptiveObject
 }
 /**
  * Returns the maximum value of an array
