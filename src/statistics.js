@@ -85,9 +85,13 @@ function minimum (array) {
 function mode (array) {
   const occurrences = occurrencesInArray(array)
   // TODO:
-  const sortedArray = sortNumbers(array)
+  // const sortedArray = sortNumbers(array)
 
-  console.log(sortedArray)
+  occurrences.sort(function (a, b) {
+    return b.occurrences - a.occurrences
+  })
+
+  // console.log(sortedArray)
   console.log(occurrences)
 }
 // TODO: Write your code here.
@@ -131,7 +135,10 @@ function occurrencesInArray (array) {
       }
       // and push the result of have many times number occurs into result
     }
-    result.push({ [compare[i]]: count })
+    result.push({
+      number: compare[i],
+      occurrences: count
+    })
     count = 0
   }
   return result
