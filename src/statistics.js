@@ -129,17 +129,19 @@ function standardDeviation (array) {
     rangeDev.push(range(tempRangeDev))
     tempRangeDev = []
   }
-  console.log(rangeDev)
+  // console.log(rangeDev)
   // TODO: Square all numbers
   for (const num of rangeDev) {
     squareDev.push(Math.pow(num, 2))
   }
-  console.log(squareDev)
+  // console.log(squareDev)
   // TODO: Check the mean of all numbers
   const newMean = mean(squareDev)
-  console.log(newMean)
+  // console.log(newMean)
   // TODO: Check the square root of the sum
-  return 'hejhej'
+  const deviation = Math.sqrt(newMean)
+  // console.log(deviation)
+  return deviation
 }
 // TODO: Write your code here.
 // TODO: ADD JSDOC-COMMENTS
