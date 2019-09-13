@@ -84,28 +84,6 @@ function minimum (array) {
 }
 function mode (array) {
   // TODO: Sort numbers
-  const sortedArray = sortNumbers(array)
-  const counterA = []
-  const counterB = []
-  let count = 0
-  for (let i = 0; i < sortedArray.length; i++) {
-    for (let x = 0; x < sortedArray.length; x++) {
-      if (sortedArray[i] === sortedArray[x]) {
-        // TODO: Check if the number in sortedArray[i]
-        // already exists in counter
-        if (counterB.includes(sortedArray[i])) {
-          count += 0
-        } else {
-          count++
-          counterB.push(sortedArray[i])
-        }
-      }
-    }
-    counterA.push(count)
-    count = 0
-  }
-  console.log('counterA ' + counterA)
-  console.log('counterB ' + counterB)
   // TODO: Find the 'mode' in the passed array
 }
 // TODO: Write your code here.
