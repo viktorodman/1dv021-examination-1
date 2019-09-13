@@ -103,6 +103,9 @@ function sortNumbers (array) {
   })
   return sortedArray
 }
+funciton numbersInArray (array) {
+  // TODO: Checks what number is the passed array
+}
 
 // Exports
 exports.descriptiveStatistics = descriptiveStatistics
