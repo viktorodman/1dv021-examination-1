@@ -85,6 +85,7 @@ function minimum (array) {
 function mode (array) {
   // TODO: Sort numbers
   // TODO: Find the 'mode' in the passed array
+  numbersInArray(array)
 }
 // TODO: Write your code here.
 function errorHandling (array) {
@@ -103,8 +104,16 @@ function sortNumbers (array) {
   })
   return sortedArray
 }
-funciton numbersInArray (array) {
-  // TODO: Checks what number is the passed array
+function numbersInArray (array) {
+  // TODO: Checks what numbers is the passed array
+  // Only one of each number will be returned
+  const result = []
+  for (let i = 0; i < array.length; i++) {
+    if (!result.includes(array[i])) {
+      result.push(array[i])
+    }
+  }
+  console.log(result)
 }
 
 // Exports
