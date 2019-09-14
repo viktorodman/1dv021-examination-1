@@ -18,16 +18,6 @@
  * @returns {{maximum: number, mean: number, median: number, minimum: number, mode: number[], range: number, standardDeviation: number}}
  */
 function descriptiveStatistics (numbers) {
-  /* errorHandling(numbers)
-  notJustNumbers(numbers) */
-  // TODO: Write your code here.
-  /* return 'maximum = ' + maximum(numbers) +
-  ' ' + 'mean = ' + mean(numbers) +
-  ' ' + 'median = ' + median(numbers) +
-  ' ' + 'minimum = ' + minimum(numbers) +
-  ' ' + 'mode = ' + mode(numbers) +
-  ' ' + 'range = ' + range(numbers) +
-  ' ' + 'standardDeviation = ' + standardDeviation(numbers) */
   const descriptiveObject = {
     maximum: maximum(numbers),
     mean: mean(numbers),
@@ -48,7 +38,6 @@ function descriptiveStatistics (numbers) {
  * @returns {number} The maximum value of the passed array.
  */
 function maximum (array) {
-  // TODO: Check for the max value in the array
   notJustNumbers(array)
   errorHandling(array)
   const arrayCopy = array.slice()
@@ -64,7 +53,6 @@ function maximum (array) {
  * @returns {number} Returns the mean of the passed array.
  */
 function mean (array) {
-  // TODO: Check the mean value of the array
   notJustNumbers(array)
   errorHandling(array)
   const sum = array.reduce((acc, numbers) => acc + numbers, 0)
@@ -129,7 +117,6 @@ function mode (array) {
   errorHandling(array)
   const arrayCopy = array.slice()
   const occurrences = occurrencesInArray(arrayCopy)
-  // const sortedArray = sortNumbers(array)
   const arrayMode = []
   occurrences.sort(function (a, b) {
     return b.occurrences - a.occurrences
@@ -140,8 +127,6 @@ function mode (array) {
   for (const numbers of newArray) {
     arrayMode.push(numbers.number)
   }
-  // console.log(sortedArray)
-  // console.log(arrayMode)
   return arrayMode
 }
 /**
@@ -166,30 +151,26 @@ function range (array) {
  */
 function standardDeviation (array) {
   errorHandling(array)
-  // TODO: Check the mean of the array
+  // Check the mean of the array
   const meanDev = mean(array)
   let tempRangeDev = []
   const rangeDev = []
   const squareDev = []
-  // TODO: Check the range for each number in the array against the mean of the array
+  // Check the range for each number in the array against the mean of the array
   for (const num of array) {
     tempRangeDev.push(num, meanDev)
 
     rangeDev.push(range(tempRangeDev))
     tempRangeDev = []
   }
-  // console.log(rangeDev)
-  // TODO: Square all numbers
+  // Square all numbers
   for (const num of rangeDev) {
     squareDev.push(Math.pow(num, 2))
   }
-  // console.log(squareDev)
-  // TODO: Check the mean of all numbers
+  // Checks the mean of all numbers
   const newMean = mean(squareDev)
-  // console.log(newMean)
-  // TODO: Check the square root of the sum
+  // Check the square root of the sum
   const deviation = Math.sqrt(newMean)
-  // console.log(deviation)
   return deviation
 }
 
@@ -207,10 +188,6 @@ function errorHandling (array) {
   if (array.length === 0) {
     throw Error('The passed array contains no elements.')
   }
-
-  // TODO: Check if the passed argument is empty
-
-  // TODO: Check if the passed argument is an array only with numbers
 }
 /**
  *Throws error if the passed array contains not just numbers.
@@ -251,8 +228,6 @@ function sortNumbers (array) {
  */
 function numbersInArray (array) {
   errorHandling(array)
-  // TODO: Checks what numbers is the passed array
-  // Only one of each number will be returned
   const result = []
   for (let i = 0; i < array.length; i++) {
     if (!result.includes(array[i])) {
@@ -283,7 +258,6 @@ function occurrencesInArray (array) {
         count++
       }
     }
-    // and push the result of have many times number occurs into result
     result.push({
       number: compare[i],
       occurrences: count
