@@ -119,7 +119,7 @@ function mode (array) {
   const arrayMode = []
   // TODO: Check if i can change the sortNumbers so that i can
   // sort an array with objects
-  timesInArray = sortNumbers(timesInArray, timesInArray.occurrences)
+  timesInArray = sortNumbers(timesInArray)
   const newArray = timesInArray.filter(function (numbers) {
     return numbers.occurrences === timesInArray[0].occurrences
   })
@@ -209,21 +209,20 @@ function notJustNumbers (array) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {array[]} returns a sorted version of the passed array
  */
-function sortNumbers (array, value) {
+function sortNumbers (array) {
   // errorHandling(array)
   // notJustNumbers(array)
-  let sortedArray = []
-  if (value === 'undefined') {
-    sortedArray = array.sort(function (a, b) {
+  if (typeof (array[0]) === 'object' && !Array.isArray(array[0]) && array !== null) {
+    const sortedObject = array.sort(function (a, b) {
+      return b.occurrences - a.occurrences
+    })
+    return sortedObject
+  } else {
+    const sortedArray = array.sort(function (a, b) {
       return a - b
     })
-  } else {
-    sortedArray = array.sort(function (a, b) {
-      return b.value - a.value
-    })
+    return sortedArray
   }
-
-  return sortedArray
 }
 /**
  *Returns a version of the passed array but the elemnts cant have duplicates.
