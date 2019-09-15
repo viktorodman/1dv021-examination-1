@@ -117,8 +117,6 @@ function mode (array) {
   const arrayCopy = array.slice()
   let timesInArray = occurrencesInArray(arrayCopy)
   const arrayMode = []
-  // TODO: Check if i can change the sortNumbers so that i can
-  // sort an array with objects
   timesInArray = sortNumbers(timesInArray, 'occurrences')
   const newArray = timesInArray.filter(function (numbers) {
     return numbers.occurrences === timesInArray[0].occurrences
@@ -240,7 +238,7 @@ function numbersInArray (array) {
       result.push(array[i])
     }
   }
-  return sortNumbers(result)
+  return result
 }
 /**
  *Returns an array with multiple objects.
