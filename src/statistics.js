@@ -18,6 +18,8 @@
  * @returns {{maximum: number, mean: number, median: number, minimum: number, mode: number[], range: number, standardDeviation: number}}
  */
 function descriptiveStatistics (numbers) {
+  notJustNumbers(numbers)
+  errorHandling(numbers)
   const descriptiveObject = {
     maximum: maximum(numbers),
     mean: mean(numbers),
@@ -136,6 +138,7 @@ function mode (array) {
  */
 function range (array) {
   errorHandling(array)
+  notJustNumbers(array)
   return (maximum(array)) - (minimum(array))
 }
 /**
@@ -148,6 +151,7 @@ function range (array) {
  */
 function standardDeviation (array) {
   errorHandling(array)
+  notJustNumbers(array)
   // Check the mean of the array
   const meanDev = mean(array)
   let tempRangeDev = []
@@ -156,7 +160,6 @@ function standardDeviation (array) {
   // Check the range for each number in the array against the mean of the array
   for (const num of array) {
     tempRangeDev.push(num, meanDev)
-
     rangeDev.push(range(tempRangeDev))
     tempRangeDev = []
   }
@@ -176,7 +179,7 @@ function standardDeviation (array) {
  *or if the passed array contains no elements.
  * @param {array[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
- * @throws {TypeError} The passed array contains not just numbers.
+ * @throws {Error} The passed array contains no elements.
  */
 function errorHandling (array) {
   if (!Array.isArray(array)) {
@@ -204,12 +207,11 @@ function notJustNumbers (array) {
  * @param {array[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
- * @throws {TypeError} The passed array contains not just numbers.
  * @returns {array[]} returns a sorted version of the passed array
  */
 function sortNumbers (array, key) {
-  // errorHandling(array)
-  // notJustNumbers(array)
+  errorHandling(array)
+  // Making sure that the passed array got an object on its first position.
   if (typeof (array[0]) === 'object' && !Array.isArray(array[0]) && array !== null) {
     const sortedObject = array.sort(function (a, b) {
       return b[key] - a[key]
@@ -232,6 +234,7 @@ function sortNumbers (array, key) {
  */
 function numbersInArray (array) {
   errorHandling(array)
+  notJustNumbers(array)
   const result = []
   for (let i = 0; i < array.length; i++) {
     if (!result.includes(array[i])) {
@@ -248,10 +251,11 @@ function numbersInArray (array) {
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
- * @returns {array[{}]} Returns the occurrence of the numbers in the passed array
+ * @returns {array[{}]} Returns an array with object that shows the occurrence of the numbers in the passed array
  */
 function occurrencesInArray (array) {
   errorHandling(array)
+  notJustNumbers(array)
   const result = []
   let count = 0
   const sortedArray = sortNumbers(array)
