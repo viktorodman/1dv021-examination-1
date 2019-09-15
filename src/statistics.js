@@ -119,7 +119,7 @@ function mode (array) {
   const arrayMode = []
   // TODO: Check if i can change the sortNumbers so that i can
   // sort an array with objects
-  timesInArray = sortNumbers(timesInArray, 'occurrences')
+  timesInArray = sortNumbers(timesInArray, timesInArray.occurrences)
   const newArray = timesInArray.filter(function (numbers) {
     return numbers.occurrences === timesInArray[0].occurrences
   })
@@ -210,14 +210,15 @@ function notJustNumbers (array) {
  * @returns {array[]} returns a sorted version of the passed array
  */
 function sortNumbers (array, value) {
-  errorHandling(array)
-  notJustNumbers(array)
+  // errorHandling(array)
+  // notJustNumbers(array)
+  let sortedArray = []
   if (value === 'undefined') {
-    const sortedArray = array.sort(function (a, b) {
+    sortedArray = array.sort(function (a, b) {
       return a - b
     })
   } else {
-    const sortedArray = array.sort(function (a, b) {
+    sortedArray = array.sort(function (a, b) {
       return b.value - a.value
     })
   }
