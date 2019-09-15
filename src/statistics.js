@@ -1,7 +1,7 @@
 /**
  * Module for obtaining descriptive information about a set of data.
  *
- * @author TODO: Write your name here.
+ * @author Viktor Ödman
  * @version 1.2.0
  */
 
@@ -203,7 +203,11 @@ function notJustNumbers (array) {
 }
 
 /**
- *Returns a sorted version of the passed array. Sorted from min to max.
+ * Checks if the first element of the passed array contains an object.
+ * If it does then the function sorts the passed arrays objects by the passed
+ * property name. It sorts from max to min.
+ * If the passed arrays first position doesnt contain an object its will
+ * sort the arrays values from min to max.
  * @param {array[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
@@ -251,7 +255,7 @@ function numbersInArray (array) {
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
- * @returns {array[{}]} Returns an array with object that shows the occurrence of the numbers in the passed array
+ * @returns {array[{}]} Returns an array with object that shows the occurrence of the numbers in the passed array.
  */
 function occurrencesInArray (array) {
   errorHandling(array)
