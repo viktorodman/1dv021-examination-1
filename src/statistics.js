@@ -78,7 +78,6 @@ function median (array) {
   const evenMedian = []
   const secondMiddleNumber = Math.round(((sortedArray.length) / 2))
   const firstMiddleNumber = secondMiddleNumber - 1
-
   // puts the two middle numbers of sortedArray into evenMedian
   evenMedian.push(sortedArray[firstMiddleNumber], sortedArray[secondMiddleNumber])
   // return the number in middle of the array
@@ -116,13 +115,13 @@ function mode (array) {
   notJustNumbers(array)
   errorHandling(array)
   const arrayCopy = array.slice()
-  const occurrences = occurrencesInArray(arrayCopy)
+  let timesInArray = occurrencesInArray(arrayCopy)
   const arrayMode = []
-  occurrences.sort(function (a, b) {
-    return b.occurrences - a.occurrences
-  })
-  const newArray = occurrences.filter(function (numbers) {
-    return numbers.occurrences === occurrences[0].occurrences
+  // TODO: Check if i can change the sortNumbers so that i can
+  // sort an array with objects
+  timesInArray = sortNumbers(timesInArray, 'occurrences')
+  const newArray = timesInArray.filter(function (numbers) {
+    return numbers.occurrences === timesInArray[0].occurrences
   })
   for (const numbers of newArray) {
     arrayMode.push(numbers.number)
@@ -210,12 +209,19 @@ function notJustNumbers (array) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {array[]} returns a sorted version of the passed array
  */
-function sortNumbers (array) {
+function sortNumbers (array, value) {
   errorHandling(array)
   notJustNumbers(array)
-  const sortedArray = array.sort(function (a, b) {
-    return a - b
-  })
+  if (value === 'undefined') {
+    const sortedArray = array.sort(function (a, b) {
+      return a - b
+    })
+  } else {
+    const sortedArray = array.sort(function (a, b) {
+      return b.value - a.value
+    })
+  }
+
   return sortedArray
 }
 /**
