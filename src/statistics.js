@@ -118,16 +118,16 @@ function mode (array) {
   const arrayCopy = array.slice()
   const timesInArray = occurrencesInArray(arrayCopy)
   const arrayMode = []
-  const newArray = timesInArray.filter(function (numbers) {
-    console.log('numbers: ' + numbers.number)
-    console.log('timesInArray: ' + numbers.occurrences)
-    return numbers.occurrences === timesInArray[0].occurrences
+  const numberOcc = timesInArray.map(function (number) {
+    return number.occurrences
   })
-  console.log('tjoho ' + newArray[0].occurrences)
+  const newArray = timesInArray.filter(function (numbers) {
+    return numbers.occurrences === maximum(numberOcc)
+  })
   for (const numbers of newArray) {
     arrayMode.push(numbers.number)
   }
-  return arrayMode
+  return sortNumbers(arrayMode)
 }
 /**
  *Returns the range of the numbers in the passed array.
