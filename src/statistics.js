@@ -227,14 +227,14 @@ function sortNumbers (array) {
  * @param {string} key A property name.
  * @returns {object[]} returns an array with the included objects sorted.
  */
-function sortObjects (array, key) {
+/* function sortObjects (array, key) {
   errorHandling(array)
   const arrayCopy = array.slice()
   const sortedObject = arrayCopy.sort(function (a, b) {
     return b[key] - a[key]
   })
   return sortedObject
-}
+} */
 /**
  * Returns a version of the passed array but an elements value
  * can only exist ones in the returned array.
@@ -285,8 +285,8 @@ function occurrencesInArray (array) {
     })
     count = 0
   }
-  console.log(sortObjects(result, 'occurrences'))
-  return sortObjects(result, 'occurrences')
+
+  return result
 }
 
 // Exports
