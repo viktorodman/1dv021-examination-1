@@ -2,7 +2,7 @@
  * Module for obtaining descriptive information about a set of data.
  *
  * @author Viktor Ödman
- * @version 1.2.0
+ * @version 1.0.0
  */
 
 'use strict'
@@ -32,8 +32,8 @@ function descriptiveStatistics (numbers) {
   return descriptiveObject
 }
 /**
- * Returns the maximum value of an array
- * @param {array[]} array An array of numbers.
+ * Returns the maximum value of the passed array
+ * @param {number[]} array An array of numbers.
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
@@ -48,7 +48,7 @@ function maximum (array) {
 }
 /**
  * Returns the mean of the numbers in the passed array
- * @param {array[]} array An array of numbers
+ * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
@@ -63,7 +63,7 @@ function mean (array) {
 
 /**
  * Returns the median of the numbers in the passed array
- * @param {array[]} array An array of numbers
+ * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
@@ -90,8 +90,8 @@ function median (array) {
   }
 }
 /**
- *Returns the minimum of the numbers in the passed array.
- * @param {array[]} array An array of numbers
+ * Returns the minimum of the numbers in the passed array.
+ * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
@@ -106,11 +106,11 @@ function minimum (array) {
 }
 /**
  *Returns an array of the mode of the numbers in the passed array.
- * @param {array[]} array An array of numbers
+ * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
- * @returns {array[]} Returns the mode of the passed array.
+ * @returns {number[]} Returns the mode of the passed array.
  */
 // CLEAN UP
 function mode (array) {
@@ -130,7 +130,7 @@ function mode (array) {
 }
 /**
  *Returns the range of the numbers in the passed array.
- * @param {array[]} array An array of numbers
+ * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
@@ -143,7 +143,7 @@ function range (array) {
 }
 /**
  *Returns the standard deviation of the numbers in the passed array.
- * @param {array[]} array An array of numbers
+ * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
@@ -177,7 +177,7 @@ function standardDeviation (array) {
 /**
  *Throws TypeError if the passed the passed argument is not an array
  *or if the passed array contains no elements.
- * @param {array[]} array An array of numbers
+ * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  */
@@ -191,7 +191,7 @@ function errorHandling (array) {
 }
 /**
  *Throws error if the passed array contains not just numbers.
- * @param {array[]} array An array of numbers
+ * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed array contains not just numbers.
  */
 function notJustNumbers (array) {
@@ -205,13 +205,14 @@ function notJustNumbers (array) {
 /**
  * Checks if the first element of the passed array contains an object.
  * If it does then the function sorts the passed arrays objects by the passed
- * property name. It sorts from max to min.
- * If the passed arrays first position doesnt contain an object its will
+ * property name. It sorts the property names value from max to min.
+ * If the passed arrays first position doesnt contain an object it will
  * sort the arrays values from min to max.
- * @param {array[]} array An array of numbers
+ * @param {array[]} array An array of numbers.
+ * @param {string} key A property name of an object.
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
- * @returns {array[]} returns a sorted version of the passed array
+ * @returns {array[]} returns a sorted version of the passed array.
  */
 function sortNumbers (array, key) {
   errorHandling(array)
@@ -255,7 +256,7 @@ function numbersInArray (array) {
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
- * @returns {array[{}]} Returns an array with object that shows the occurrence of the numbers in the passed array.
+ * @returns {[object]} Returns an array with objects that shows the occurrence of the numbers in the passed array.
  */
 function occurrencesInArray (array) {
   errorHandling(array)
