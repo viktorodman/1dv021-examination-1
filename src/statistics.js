@@ -43,8 +43,7 @@ function maximum (array) {
   notJustNumbers(array)
   errorHandling(array)
   const arrayCopy = array.slice()
-  const sortedArray = sortNumbers(arrayCopy)
-  return sortedArray[sortedArray.length - 1]
+  return Math.max(...arrayCopy)
 }
 /**
  * Returns the mean of the numbers in the passed array
@@ -101,8 +100,7 @@ function minimum (array) {
   notJustNumbers(array)
   errorHandling(array)
   const arrayCopy = array.slice()
-  const sortedArray = sortNumbers(arrayCopy)
-  return sortedArray[0]
+  return Math.min(...arrayCopy)
 }
 /**
  *Returns an array of the mode of the numbers in the passed array.
