@@ -56,8 +56,9 @@ function maximum (array) {
 function mean (array) {
   notJustNumbers(array)
   errorHandling(array)
-  const sum = array.reduce((acc, numbers) => acc + numbers, 0)
-  return sum / array.length
+  const arrayCopy = array.slice()
+  const sum = arrayCopy.reduce((acc, numbers) => acc + numbers, 0)
+  return sum / arrayCopy.length
 }
 
 /**
@@ -115,12 +116,14 @@ function mode (array) {
   notJustNumbers(array)
   errorHandling(array)
   const arrayCopy = array.slice()
-  let timesInArray = occurrencesInArray(arrayCopy)
+  const timesInArray = occurrencesInArray(arrayCopy)
   const arrayMode = []
-  timesInArray = sortObjects(timesInArray, 'occurrences')
   const newArray = timesInArray.filter(function (numbers) {
+    console.log('numbers: ' + numbers.number)
+    console.log('timesInArray: ' + numbers.occurrences)
     return numbers.occurrences === timesInArray[0].occurrences
   })
+  console.log('tjoho ' + newArray[0].occurrences)
   for (const numbers of newArray) {
     arrayMode.push(numbers.number)
   }
@@ -137,7 +140,8 @@ function mode (array) {
 function range (array) {
   errorHandling(array)
   notJustNumbers(array)
-  return (maximum(array)) - (minimum(array))
+  const arrayCopy = array.slice()
+  return (maximum(arrayCopy)) - (minimum(arrayCopy))
 }
 /**
  *Returns the standard deviation of the numbers in the passed array.
@@ -150,13 +154,14 @@ function range (array) {
 function standardDeviation (array) {
   errorHandling(array)
   notJustNumbers(array)
+  const arrayCopy = array.slice()
   // Check the mean of the array
-  const meanDev = mean(array)
+  const meanDev = mean(arrayCopy)
   let tempRangeDev = []
   const rangeDev = []
   const squareDev = []
   // Check the range for each number in the array against the mean of the array
-  for (const num of array) {
+  for (const num of arrayCopy) {
     tempRangeDev.push(num, meanDev)
     rangeDev.push(range(tempRangeDev))
     tempRangeDev = []
@@ -210,7 +215,8 @@ function notJustNumbers (array) {
 function sortNumbers (array) {
   errorHandling(array)
   notJustNumbers(array)
-  const sortedArray = array.sort(function (a, b) {
+  const arrayCopy = array.slice()
+  const sortedArray = arrayCopy.sort(function (a, b) {
     return a - b
   })
   return sortedArray
@@ -223,7 +229,8 @@ function sortNumbers (array) {
  */
 function sortObjects (array, key) {
   errorHandling(array)
-  const sortedObject = array.sort(function (a, b) {
+  const arrayCopy = array.slice()
+  const sortedObject = arrayCopy.sort(function (a, b) {
     return b[key] - a[key]
   })
   return sortedObject
@@ -240,10 +247,11 @@ function sortObjects (array, key) {
 function numbersInArray (array) {
   errorHandling(array)
   notJustNumbers(array)
+  const arrayCopy = array.slice()
   const result = []
-  for (let i = 0; i < array.length; i++) {
-    if (!result.includes(array[i])) {
-      result.push(array[i])
+  for (let i = 0; i < arrayCopy.length; i++) {
+    if (!result.includes(arrayCopy[i])) {
+      result.push(arrayCopy[i])
     }
   }
   return result
@@ -261,13 +269,13 @@ function numbersInArray (array) {
 function occurrencesInArray (array) {
   errorHandling(array)
   notJustNumbers(array)
+  const arrayCopy = array.slice()
   const result = []
   let count = 0
-  const sortedArray = sortNumbers(array)
-  const compare = numbersInArray(array)
+  const compare = numbersInArray(arrayCopy)
   for (let i = 0; i < compare.length; i++) {
-    for (let x = 0; x < sortedArray.length; x++) {
-      if (compare[i] === sortedArray[x]) {
+    for (let x = 0; x < arrayCopy.length; x++) {
+      if (compare[i] === arrayCopy[x]) {
         count++
       }
     }
@@ -277,7 +285,8 @@ function occurrencesInArray (array) {
     })
     count = 0
   }
-  return result
+  console.log(sortObjects(result, 'occurrences'))
+  return sortObjects(result, 'occurrences')
 }
 
 // Exports
