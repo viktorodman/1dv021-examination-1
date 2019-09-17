@@ -203,13 +203,8 @@ function notJustNumbers (array) {
 }
 
 /**
- * Checks if the first element of the passed array contains an object.
- * If it does then the function sorts the passed arrays objects by the passed
- * property name. It sorts the property names value from max to min.
- * If the passed arrays first position doesnt contain an object it will
- * sort the arrays values from min to max.
- * @param {array[]} array An array of numbers.
- * @param {string} key A property name of an object.
+ * Sort the passed arrays values from min to max.
+ * @param {number[]} array An array of numbers.
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @returns {array[]} returns a sorted version of the passed array.
@@ -223,7 +218,7 @@ function sortNumbers (array) {
   return sortedArray
 }
 /**
- *
+ * Sorts the passed array of objects by the passed property name.
  * @param {object[]} array An array with objects.
  * @param {string} key A property name.
  * @returns {object[]} returns an array with the included objects sorted.
@@ -236,12 +231,13 @@ function sortObjects (array, key) {
   return sortedObject
 }
 /**
- *Returns a version of the passed array but the elemnts cant have duplicates.
- * @param {array[]} array An array of numbers
+ * Returns a version of the passed array but an elements value
+ * can only exist ones in the returned array.
+ * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
- * @returns {array[]} Returns the passed array but with no duplicates.
+ * @returns {number[]} Returns the passed array but with no duplicates.
  */
 function numbersInArray (array) {
   errorHandling(array)
@@ -255,14 +251,14 @@ function numbersInArray (array) {
   return result
 }
 /**
- *Returns an array with multiple objects.
- *The objects show how many times a certain number in
- *the passed array occurs.
- * @param {array[]} array An array of numbers
+ * Returns an array with multiple objects.
+ * The objects show how many times a certain number in
+ * the passed array occurs.
+ * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
- * @returns {[object]} Returns an array with objects that shows the occurrence of the numbers in the passed array.
+ * @returns {object[]} Returns an array with objects that shows the occurrence of the numbers in the passed array.
  */
 function occurrencesInArray (array) {
   errorHandling(array)
@@ -283,7 +279,6 @@ function occurrencesInArray (array) {
     })
     count = 0
   }
-  console.log(result)
   return result
 }
 
