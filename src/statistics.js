@@ -119,7 +119,7 @@ function mode (array) {
   const arrayCopy = array.slice()
   let timesInArray = occurrencesInArray(arrayCopy)
   const arrayMode = []
-  timesInArray = sortNumbers(timesInArray, 'occurrences')
+  timesInArray = sortObjects(timesInArray, 'occurrences')
   const newArray = timesInArray.filter(function (numbers) {
     return numbers.occurrences === timesInArray[0].occurrences
   })
@@ -214,20 +214,26 @@ function notJustNumbers (array) {
  * @throws {Error} The passed array contains no elements.
  * @returns {array[]} returns a sorted version of the passed array.
  */
-function sortNumbers (array, key) {
+function sortNumbers (array) {
   errorHandling(array)
-  // Making sure that the passed array got an object on its first position.
-  if (typeof (array[0]) === 'object' && !Array.isArray(array[0]) && array !== null) {
-    const sortedObject = array.sort(function (a, b) {
-      return b[key] - a[key]
-    })
-    return sortedObject
-  } else {
-    const sortedArray = array.sort(function (a, b) {
-      return a - b
-    })
-    return sortedArray
-  }
+  notJustNumbers(array)
+  const sortedArray = array.sort(function (a, b) {
+    return a - b
+  })
+  return sortedArray
+}
+/**
+ *
+ * @param {object[]} array An array with objects.
+ * @param {string} key A property name.
+ * @returns {object[]} returns an array with the included objects sorted.
+ */
+function sortObjects (array, key) {
+  errorHandling(array)
+  const sortedObject = array.sort(function (a, b) {
+    return b[key] - a[key]
+  })
+  return sortedObject
 }
 /**
  *Returns a version of the passed array but the elemnts cant have duplicates.
@@ -277,6 +283,7 @@ function occurrencesInArray (array) {
     })
     count = 0
   }
+  console.log(result)
   return result
 }
 
