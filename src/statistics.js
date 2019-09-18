@@ -40,8 +40,8 @@ function descriptiveStatistics (numbers) {
  */
 function maximum (array) {
   errorHandling(array)
-  const arrayCopy = array.slice()
-  return Math.max(...arrayCopy)
+  // const arrayCopy = array.slice()
+  return Math.max(...array)
 }
 /**
  * Returns the mean of the numbers in the passed array
@@ -54,7 +54,9 @@ function maximum (array) {
 function mean (array) {
   errorHandling(array)
   const arrayCopy = array.slice()
-  const sum = arrayCopy.reduce((acc, numbers) => acc + numbers, 0)
+  const sum = arrayCopy.reduce(function (acc, numbers) {
+    return acc + numbers
+  }, 0)
   return sum / arrayCopy.length
 }
 
@@ -73,12 +75,9 @@ function median (array) {
   // used the example in the answer on how to find the middle of an odd array
   // https://stackoverflow.com/questions/20904368/javascript-finding-the-most-middle-value-in-an-array
   const oddMedian = sortedArray[Math.round((sortedArray.length - 1) / 2)]
-  const evenMedian = []
   const secondMiddleNumber = sortedArray[oddMedian]
   const firstMiddleNumber = sortedArray[secondMiddleNumber - 1]
-  // puts the two middle numbers of sortedArray into evenMedian
-  evenMedian.push(sortedArray[firstMiddleNumber], sortedArray[secondMiddleNumber])
-  // return the number in middle of the array
+  const evenMedian = [firstMiddleNumber, secondMiddleNumber]
   if (sortedArray.length % 2 !== 0) {
     return oddMedian
   } else {
@@ -95,8 +94,8 @@ function median (array) {
  */
 function minimum (array) {
   errorHandling(array)
-  const arrayCopy = array.slice()
-  return Math.min(...arrayCopy)
+  // const arrayCopy = array.slice()
+  return Math.min(...array)
 }
 /**
  *Returns an array of the mode of the numbers in the passed array.
@@ -110,16 +109,19 @@ function minimum (array) {
 function mode (array) {
   errorHandling(array)
   const arrayCopy = array.slice()
-  const arrayMode = []
+  // Puts all the occurrences property values in an array
   const numberOcc = occurrencesInArray(arrayCopy).map(function (number) {
     return number.occurrences
   })
+  // Checks for the max value of the property 'occurrences' and saves
+  // all objects thats equal to the max value.
   const newArray = occurrencesInArray(arrayCopy).filter(function (numbers) {
     return numbers.occurrences === maximum(numberOcc)
   })
-  for (const numbers of newArray) {
-    arrayMode.push(numbers.number)
-  }
+  // Saves the property value of the property number in a new array.
+  const arrayMode = newArray.map(function (numbers) {
+    return numbers.number
+  })
   return sortNumbers(arrayMode)
 }
 /**
@@ -154,8 +156,8 @@ function standardDeviation (array) {
   const squareDev = rangeDev.map(function (numbers) {
     return Math.pow(numbers, 2)
   })
-  // returns the square root of the mean of squareDev.
-  // this is the standardDeviation of the array
+  // Returns the square root of the mean of squareDev.
+  // This is the standardDeviation of the array
   return Math.sqrt(mean(squareDev))
 }
 
