@@ -146,23 +146,18 @@ function range (array) {
 function standardDeviation (array) {
   errorHandling(array)
   const arrayCopy = array.slice()
-  // let tempRangeDev = []
-  // const rangeDev = []
-  const squareDev = []
+  // const squareDev = []
   // Check the range for each number in the array against the mean of the array
-  /* for (const num of arrayCopy) {
-    tempRangeDev.push(num, mean(arrayCopy))
-    rangeDev.push(range(tempRangeDev))
-    tempRangeDev = []
-  } */
   const rangeDev = arrayCopy.map(function (number) {
     return range([number, mean(arrayCopy)])
   })
-  console.log(rangeDev)
   // Square all numbers
-  for (const num of rangeDev) {
+  const squareDev = rangeDev.map(function (numbers) {
+    return Math.pow(numbers, 2)
+  })
+  /* for (const num of rangeDev) {
     squareDev.push(Math.pow(num, 2))
-  }
+  } */
   // Checks the mean of all numbers
   const newMean = mean(squareDev)
   // Check the square root of the sum
