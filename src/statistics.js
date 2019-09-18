@@ -78,8 +78,8 @@ function median (array) {
   // https://stackoverflow.com/questions/20904368/javascript-finding-the-most-middle-value-in-an-array
   const oddMedian = sortedArray[Math.round((sortedArray.length - 1) / 2)]
   const evenMedian = []
-  const secondMiddleNumber = Math.round(((sortedArray.length) / 2))
-  const firstMiddleNumber = secondMiddleNumber - 1
+  const secondMiddleNumber = sortedArray[oddMedian]
+  const firstMiddleNumber = sortedArray[secondMiddleNumber - 1]
   // puts the two middle numbers of sortedArray into evenMedian
   evenMedian.push(sortedArray[firstMiddleNumber], sortedArray[secondMiddleNumber])
   // return the number in middle of the array
@@ -116,12 +116,11 @@ function mode (array) {
   notJustNumbers(array)
   errorHandling(array)
   const arrayCopy = array.slice()
-  const timesInArray = occurrencesInArray(arrayCopy)
   const arrayMode = []
-  const numberOcc = timesInArray.map(function (number) {
+  const numberOcc = occurrencesInArray(arrayCopy).map(function (number) {
     return number.occurrences
   })
-  const newArray = timesInArray.filter(function (numbers) {
+  const newArray = occurrencesInArray(arrayCopy).filter(function (numbers) {
     return numbers.occurrences === maximum(numberOcc)
   })
   for (const numbers of newArray) {
@@ -221,20 +220,6 @@ function sortNumbers (array) {
   })
   return sortedArray
 }
-/**
- * Sorts the passed array of objects by the passed property name.
- * @param {object[]} array An array with objects.
- * @param {string} key A property name.
- * @returns {object[]} returns an array with the included objects sorted.
- */
-/* function sortObjects (array, key) {
-  errorHandling(array)
-  const arrayCopy = array.slice()
-  const sortedObject = arrayCopy.sort(function (a, b) {
-    return b[key] - a[key]
-  })
-  return sortedObject
-} */
 /**
  * Returns a version of the passed array but an elements value
  * can only exist ones in the returned array.
