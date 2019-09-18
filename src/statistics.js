@@ -18,7 +18,7 @@
  * @returns {{maximum: number, mean: number, median: number, minimum: number, mode: number[], range: number, standardDeviation: number}}
  */
 function descriptiveStatistics (numbers) {
-  notJustNumbers(numbers)
+  // notJustNumbers(numbers)
   errorHandling(numbers)
   const descriptiveObject = {
     maximum: maximum(numbers),
@@ -40,7 +40,7 @@ function descriptiveStatistics (numbers) {
  * @returns {number} The maximum value of the passed array.
  */
 function maximum (array) {
-  notJustNumbers(array)
+  // notJustNumbers(array)
   errorHandling(array)
   const arrayCopy = array.slice()
   return Math.max(...arrayCopy)
@@ -54,7 +54,7 @@ function maximum (array) {
  * @returns {number} Returns the mean of the passed array.
  */
 function mean (array) {
-  notJustNumbers(array)
+  // notJustNumbers(array)
   errorHandling(array)
   const arrayCopy = array.slice()
   const sum = arrayCopy.reduce((acc, numbers) => acc + numbers, 0)
@@ -70,7 +70,7 @@ function mean (array) {
  * @returns {number} Returns the median of the passed array.
  */
 function median (array) {
-  notJustNumbers(array)
+  // notJustNumbers(array)
   errorHandling(array)
   const arrayCopy = array.slice()
   const sortedArray = sortNumbers(arrayCopy)
@@ -98,7 +98,7 @@ function median (array) {
  * @returns {number} Returns the minimum of the passed array.
  */
 function minimum (array) {
-  notJustNumbers(array)
+  // notJustNumbers(array)
   errorHandling(array)
   const arrayCopy = array.slice()
   return Math.min(...arrayCopy)
@@ -113,7 +113,7 @@ function minimum (array) {
  */
 // CLEAN UP
 function mode (array) {
-  notJustNumbers(array)
+  // notJustNumbers(array)
   errorHandling(array)
   const arrayCopy = array.slice()
   const arrayMode = []
@@ -138,7 +138,7 @@ function mode (array) {
  */
 function range (array) {
   errorHandling(array)
-  notJustNumbers(array)
+  // notJustNumbers(array)
   const arrayCopy = array.slice()
   return (maximum(arrayCopy)) - (minimum(arrayCopy))
 }
@@ -152,7 +152,7 @@ function range (array) {
  */
 function standardDeviation (array) {
   errorHandling(array)
-  notJustNumbers(array)
+  // notJustNumbers(array)
   const arrayCopy = array.slice()
   // Check the mean of the array
   const meanDev = mean(arrayCopy)
@@ -186,9 +186,14 @@ function standardDeviation (array) {
 function errorHandling (array) {
   if (!Array.isArray(array)) {
     throw TypeError('The passed argument is not an array.')
-  }
-  if (array.length === 0) {
+  } else if (array.length === 0) {
     throw Error('The passed array contains no elements.')
+  } else {
+    for (let i = 0; i < array.length; i++) {
+      if (typeof (array[i]) !== 'number') {
+        throw TypeError('The passed array contains not just numbers.')
+      }
+    }
   }
 }
 /**
@@ -196,13 +201,9 @@ function errorHandling (array) {
  * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed array contains not just numbers.
  */
-function notJustNumbers (array) {
-  for (let i = 0; i < array.length; i++) {
-    if (typeof (array[i]) !== 'number') {
-      throw TypeError('The passed array contains not just numbers.')
-    }
-  }
-}
+/* function notJustNumbers (array) {
+
+} */
 
 /**
  * Sort the passed arrays values from min to max.
@@ -213,7 +214,7 @@ function notJustNumbers (array) {
  */
 function sortNumbers (array) {
   errorHandling(array)
-  notJustNumbers(array)
+  // notJustNumbers(array)
   const arrayCopy = array.slice()
   const sortedArray = arrayCopy.sort(function (a, b) {
     return a - b
@@ -231,7 +232,7 @@ function sortNumbers (array) {
  */
 function numbersInArray (array) {
   errorHandling(array)
-  notJustNumbers(array)
+  // notJustNumbers(array)
   const arrayCopy = array.slice()
   const result = []
   for (let i = 0; i < arrayCopy.length; i++) {
@@ -253,7 +254,7 @@ function numbersInArray (array) {
  */
 function occurrencesInArray (array) {
   errorHandling(array)
-  notJustNumbers(array)
+  // notJustNumbers(array)
   const arrayCopy = array.slice()
   const result = []
   let count = 0
