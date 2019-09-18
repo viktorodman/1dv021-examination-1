@@ -146,7 +146,6 @@ function range (array) {
 function standardDeviation (array) {
   errorHandling(array)
   const arrayCopy = array.slice()
-  // const squareDev = []
   // Check the range for each number in the array against the mean of the array
   const rangeDev = arrayCopy.map(function (number) {
     return range([number, mean(arrayCopy)])
@@ -155,14 +154,9 @@ function standardDeviation (array) {
   const squareDev = rangeDev.map(function (numbers) {
     return Math.pow(numbers, 2)
   })
-  /* for (const num of rangeDev) {
-    squareDev.push(Math.pow(num, 2))
-  } */
-  // Checks the mean of all numbers
-  const newMean = mean(squareDev)
-  // Check the square root of the sum
-  const deviation = Math.sqrt(newMean)
-  return deviation
+  // returns the square root of the mean of squareDev.
+  // this is the standardDeviation of the array
+  return Math.sqrt(mean(squareDev))
 }
 
 /**
