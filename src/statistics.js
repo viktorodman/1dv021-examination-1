@@ -196,28 +196,7 @@ function sortNumbers (array) {
   })
   return sortedArray
 }
-/**
- * Returns a version of the passed array but an elements value
- * can only exist ones in the returned array.
- * @param {number[]} array An array of numbers
- * @throws {TypeError} The passed argument is not an array.
- * @throws {Error} The passed array contains no elements.
- * @throws {TypeError} The passed array contains not just numbers.
- * @returns {number[]} Returns the passed array but with no duplicates.
- */
-function numbersInArray (array) {
-  errorHandling(array)
-  const arrayCopy = array.slice()
-  /* const result = []
-  for (let i = 0; i < arrayCopy.length; i++) {
-    if (!result.includes(arrayCopy[i])) {
-      result.push(arrayCopy[i])
-    }
-  } */
 
-  const result = [...new Set(arrayCopy)]
-  return result
-}
 /**
  * Returns an array with multiple objects.
  * The objects show how many times a certain number in
@@ -233,7 +212,7 @@ function occurrencesInArray (array) {
   const arrayCopy = array.slice()
   const result = []
   let count = 0
-  const compare = numbersInArray(arrayCopy)
+  const compare = [...new Set(arrayCopy)]
   for (let i = 0; i < compare.length; i++) {
     for (let x = 0; x < arrayCopy.length; x++) {
       if (compare[i] === arrayCopy[x]) {
