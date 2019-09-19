@@ -18,7 +18,8 @@
  * @returns {{maximum: number, mean: number, median: number, minimum: number, mode: number[], range: number, standardDeviation: number}}
  */
 function descriptiveStatistics (numbers) {
-  const descriptiveObject = {
+  errorHandling(numbers)
+  const descriptiveStatisticsObject = {
     maximum: maximum(numbers),
     mean: mean(numbers),
     median: median(numbers),
@@ -27,10 +28,11 @@ function descriptiveStatistics (numbers) {
     range: range(numbers),
     standardDeviation: standardDeviation(numbers)
   }
-  return descriptiveObject
+  return descriptiveStatisticsObject
 }
 /**
  * Returns the maximum value of the passed array
+ *
  * @param {number[]} array An array of numbers.
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
@@ -39,11 +41,12 @@ function descriptiveStatistics (numbers) {
  */
 function maximum (array) {
   errorHandling(array)
-  // const arrayCopy = array.slice()
-  return Math.max(...array)
+  const arrayCopy = array.slice()
+  return Math.max(...arrayCopy)
 }
 /**
  * Returns the mean of the numbers in the passed array
+ *
  * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
@@ -61,6 +64,7 @@ function mean (array) {
 
 /**
  * Returns the median of the numbers in the passed array
+ *
  * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
@@ -85,6 +89,7 @@ function median (array) {
 }
 /**
  * Returns the minimum of the numbers in the passed array.
+ *
  * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
@@ -97,7 +102,8 @@ function minimum (array) {
   return Math.min(...arrayCopy)
 }
 /**
- *Returns an array of the mode of the numbers in the passed array.
+ * Returns an array of the mode of the numbers in the passed array.
+ *
  * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
@@ -123,7 +129,8 @@ function mode (array) {
   return sortNumbers(arrayMode)
 }
 /**
- *Returns the range of the numbers in the passed array.
+ * Returns the range of the numbers in the passed array.
+ *
  * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
@@ -136,7 +143,8 @@ function range (array) {
   return (maximum(arrayCopy)) - (minimum(arrayCopy))
 }
 /**
- *Returns the standard deviation of the numbers in the passed array.
+ * Returns the standard deviation of the numbers in the passed array.
+ *
  * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
@@ -147,21 +155,22 @@ function standardDeviation (array) {
   errorHandling(array)
   const arrayCopy = array.slice()
   // Check the range for each number in the array against the mean of the array
-  const rangeDev = arrayCopy.map(function (number) {
+  const checkRange = arrayCopy.map(function (number) {
     return range([number, mean(arrayCopy)])
   })
   // Square all numbers
-  const squareDev = rangeDev.map(function (numbers) {
+  const squareNumbers = checkRange.map(function (numbers) {
     return Math.pow(numbers, 2)
   })
   // Returns the square root of the mean of squareDev.
   // This is the standardDeviation of the array
-  return Math.sqrt(mean(squareDev))
+  return Math.sqrt(mean(squareNumbers))
 }
 
 /**
- *Throws TypeError if the passed the passed argument is not an array
- *or if the passed array contains no elements.
+ * Throws TypeError if the passed the passed argument is not an array
+ * or if the passed array contains no elements.
+ *
  * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
@@ -182,6 +191,7 @@ function errorHandling (array) {
 }
 /**
  * Sort the passed arrays values from min to max.
+ *
  * @param {number[]} array An array of numbers.
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
@@ -196,11 +206,11 @@ function sortNumbers (array) {
   })
   return sortedArray
 }
-
 /**
  * Returns an array with multiple objects.
  * The objects show how many times a certain number in
  * the passed array occurs.
+ *
  * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
@@ -212,6 +222,9 @@ function occurrencesInArray (array) {
   const arrayCopy = array.slice()
   const result = []
   let count = 0
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set#Remove_duplicate_elements_from_the_array
+  // Used this to remove duplicate values from arrayCopy
+  // to make it easier to compare it against arrayCopy
   const compare = [...new Set(arrayCopy)]
   for (let i = 0; i < compare.length; i++) {
     for (let x = 0; x < arrayCopy.length; x++) {
@@ -225,7 +238,6 @@ function occurrencesInArray (array) {
     })
     count = 0
   }
-
   return result
 }
 
