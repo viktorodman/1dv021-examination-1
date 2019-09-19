@@ -18,7 +18,6 @@
  * @returns {{maximum: number, mean: number, median: number, minimum: number, mode: number[], range: number, standardDeviation: number}}
  */
 function descriptiveStatistics (numbers) {
-  errorHandling(numbers)
   const descriptiveObject = {
     maximum: maximum(numbers),
     mean: mean(numbers),
@@ -94,8 +93,8 @@ function median (array) {
  */
 function minimum (array) {
   errorHandling(array)
-  // const arrayCopy = array.slice()
-  return Math.min(...array)
+  const arrayCopy = array.slice()
+  return Math.min(...arrayCopy)
 }
 /**
  *Returns an array of the mode of the numbers in the passed array.
@@ -105,7 +104,6 @@ function minimum (array) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number[]} Returns the mode of the passed array.
  */
-// CLEAN UP
 function mode (array) {
   errorHandling(array)
   const arrayCopy = array.slice()
@@ -114,7 +112,7 @@ function mode (array) {
     return number.occurrences
   })
   // Checks for the max value of the property 'occurrences' and saves
-  // all objects thats equal to the max value.
+  // all objects in an array thats equal to the max value.
   const newArray = occurrencesInArray(arrayCopy).filter(function (numbers) {
     return numbers.occurrences === maximum(numberOcc)
   })
@@ -210,12 +208,14 @@ function sortNumbers (array) {
 function numbersInArray (array) {
   errorHandling(array)
   const arrayCopy = array.slice()
-  const result = []
+  /* const result = []
   for (let i = 0; i < arrayCopy.length; i++) {
     if (!result.includes(arrayCopy[i])) {
       result.push(arrayCopy[i])
     }
-  }
+  } */
+
+  const result = [...new Set(arrayCopy)]
   return result
 }
 /**
