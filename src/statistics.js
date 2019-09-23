@@ -182,11 +182,16 @@ function errorHandling (array) {
   } else if (array.length === 0) {
     throw Error('The passed array contains no elements.')
   } else {
-    for (let i = 0; i < array.length; i++) {
+    /* for (let i = 0; i < array.length; i++) {
       if (typeof (array[i]) !== 'number') {
         throw TypeError('The passed array contains not just numbers.')
       }
-    }
+    } */
+    array.forEach(function (element) {
+      if (typeof (element) !== 'number') {
+        throw TypeError('The passed array contains not just numbers.')
+      }
+    })
   }
 }
 /**
