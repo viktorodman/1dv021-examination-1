@@ -44,6 +44,7 @@ function maximum (array) {
   const arrayCopy = array.slice()
   return Math.max(...arrayCopy)
 }
+
 /**
  * Returns the mean of the numbers in the passed array
  *
@@ -75,17 +76,16 @@ function median (array) {
   errorHandling(array)
   const arrayCopy = array.slice()
   const sortedArray = sortNumbers(arrayCopy)
-  // used the example in the answer on how to find the middle of an odd array
-  // https://stackoverflow.com/questions/20904368/javascript-finding-the-most-middle-value-in-an-array
-  const oddMedian = sortedArray[Math.round((sortedArray.length - 1) / 2)]
-  const secondMiddleNumber = sortedArray[oddMedian]
-  const firstMiddleNumber = sortedArray[secondMiddleNumber - 1]
-  const evenMedian = [firstMiddleNumber, secondMiddleNumber]
+  let theMedian
+  // Used the example from the lecture.
+  // https://youtu.be/nlZ9PX1zfbI?t=5938
+  const middleOfArray = Math.round(sortedArray.length / 2)
   if (sortedArray.length % 2 !== 0) {
-    return oddMedian
+    theMedian = sortedArray[middleOfArray - 1]
   } else {
-    return mean(evenMedian)
+    theMedian = mean([sortedArray[middleOfArray - 1], sortedArray[middleOfArray]])
   }
+  return theMedian
 }
 /**
  * Returns the minimum of the numbers in the passed array.
