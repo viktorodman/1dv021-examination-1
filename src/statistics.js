@@ -182,11 +182,6 @@ function errorHandling (array) {
   } else if (array.length === 0) {
     throw Error('The passed array contains no elements.')
   } else {
-    /* for (let i = 0; i < array.length; i++) {
-      if (typeof (array[i]) !== 'number') {
-        throw TypeError('The passed array contains not just numbers.')
-      }
-    } */
     array.forEach(function (element) {
       if (typeof (element) !== 'number') {
         throw TypeError('The passed array contains not just numbers.')
@@ -231,18 +226,18 @@ function occurrencesInArray (array) {
   // Used this to remove duplicate values from arrayCopy
   // to make it easier to compare it against arrayCopy
   const compare = [...new Set(arrayCopy)]
-  for (let i = 0; i < compare.length; i++) {
-    for (let x = 0; x < arrayCopy.length; x++) {
-      if (compare[i] === arrayCopy[x]) {
+  compare.forEach(function (number) {
+    arrayCopy.forEach(function (number2) {
+      if (number === number2) {
         count++
       }
-    }
+    })
     result.push({
-      number: compare[i],
+      number: number,
       occurrences: count
     })
     count = 0
-  }
+  })
   return result
 }
 
