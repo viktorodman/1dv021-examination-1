@@ -113,20 +113,21 @@ function minimum (array) {
 function mode (array) {
   errorHandling(array)
   const arrayCopy = array.slice()
-  // Puts all the occurrences property values in an array
-  const numberOcc = occurrencesInArray(arrayCopy).map(function (number) {
-    return number.occurrences
+  const freqInArray = frequenciesInArray(arrayCopy)
+  // Puts all the frequency property values in an array
+  const numberFrequency = freqInArray.map(function (number) {
+    return number.frequency
   })
-  // Checks for the max value of the property 'occurrences' and saves
+  // Checks for the max value of the property 'frequency' and saves
   // all objects in an array thats equal to the max value.
-  const newArray = occurrencesInArray(arrayCopy).filter(function (numbers) {
-    return numbers.occurrences === maximum(numberOcc)
+  const mostFrequentNumbers = freqInArray.filter(function (numbers) {
+    return numbers.frequency === maximum(numberFrequency)
   })
   // Saves the property value of the property number in a new array.
-  const arrayMode = newArray.map(function (numbers) {
+  const modeOfArray = mostFrequentNumbers.map(function (numbers) {
     return numbers.number
   })
-  return sortNumbers(arrayMode)
+  return sortNumbers(modeOfArray)
 }
 /**
  * Returns the range of the numbers in the passed array.
@@ -154,9 +155,10 @@ function range (array) {
 function standardDeviation (array) {
   errorHandling(array)
   const arrayCopy = array.slice()
+  const meanOfArray = mean(arrayCopy)
   // Check the range for each number in the array against the mean of the array
   const checkRange = arrayCopy.map(function (number) {
-    return range([number, mean(arrayCopy)])
+    return range([number, meanOfArray])
   })
   // Square all numbers
   const squareNumbers = checkRange.map(function (numbers) {
@@ -217,7 +219,7 @@ function sortNumbers (array) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {object[]} Returns an array with objects that shows the occurrence of the numbers in the passed array.
  */
-function occurrencesInArray (array) {
+function frequenciesInArray (array) {
   errorHandling(array)
   const arrayCopy = array.slice()
   const result = []
@@ -225,7 +227,8 @@ function occurrencesInArray (array) {
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set#Remove_duplicate_elements_from_the_array
   // Used this to remove duplicate values from arrayCopy
   // to make it easier to compare it against arrayCopy
-  const compare = [...new Set(arrayCopy)]
+  const setObject = new Set(arrayCopy)
+  const compare = [...setObject]
   compare.forEach(function (number) {
     arrayCopy.forEach(function (number2) {
       if (number === number2) {
@@ -234,7 +237,7 @@ function occurrencesInArray (array) {
     })
     result.push({
       number: number,
-      occurrences: count
+      frequency: count
     })
     count = 0
   })
