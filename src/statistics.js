@@ -108,7 +108,7 @@ function minimum (array) {
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
- * @returns {number[]} Returns the mode of the passed array.
+ * @returns {number[]} Returns an array of the mode of the passed array.
  */
 function mode (array) {
   errorHandling(array)
@@ -164,14 +164,15 @@ function standardDeviation (array) {
   const squareNumbers = checkRange.map(function (numbers) {
     return Math.pow(numbers, 2)
   })
-  // Returns the square root of the mean of squareDev.
+  // Returns the square root of the mean of the numbers in squareNumbers
   // This is the standardDeviation of the array
   return Math.sqrt(mean(squareNumbers))
 }
 
 /**
- * Throws TypeError if the passed the passed argument is not an array
- * or if the passed array contains no elements.
+ * Throws a TypeError if the passed array is not an array
+ * or if the passed array contains not just numbers.
+ * Throw an Error if the passed array contains no elements.
  *
  * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
@@ -180,13 +181,13 @@ function standardDeviation (array) {
  */
 function errorHandling (array) {
   if (!Array.isArray(array)) {
-    throw TypeError('The passed argument is not an array.')
+    throw new TypeError('The passed argument is not an array.')
   } else if (array.length === 0) {
-    throw Error('The passed array contains no elements.')
+    throw new Error('The passed array contains no elements.')
   } else {
     array.forEach(function (element) {
       if (typeof (element) !== 'number') {
-        throw TypeError('The passed array contains not just numbers.')
+        throw new TypeError('The passed array contains not just numbers.')
       }
     })
   }
@@ -198,7 +199,7 @@ function errorHandling (array) {
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
- * @returns {array[]} returns a sorted version of the passed array.
+ * @returns {array[]} Returns a sorted version of the passed array.
  */
 function sortNumbers (array) {
   errorHandling(array)
@@ -210,14 +211,13 @@ function sortNumbers (array) {
 }
 /**
  * Returns an array with multiple objects.
- * The objects show how many times a certain number in
- * the passed array occurs.
+ * The objects shows the frequency of the numbers in the passed array.
  *
  * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
- * @returns {object[]} Returns an array with objects that shows the occurrence of the numbers in the passed array.
+ * @returns {object[]} Returns an array with objects that shows the frequency of the numbers in the passed array.
  */
 function frequenciesInArray (array) {
   errorHandling(array)
