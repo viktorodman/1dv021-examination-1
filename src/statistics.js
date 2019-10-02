@@ -17,6 +17,7 @@
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {{maximum: number, mean: number, median: number, minimum: number, mode: number[], range: number, standardDeviation: number}}
  */
+
 function descriptiveStatistics (numbers) {
   errorHandling(numbers)
   const descriptiveStatisticsObject = {
@@ -30,6 +31,7 @@ function descriptiveStatistics (numbers) {
   }
   return descriptiveStatisticsObject
 }
+
 /**
  * Returns the maximum value of the passed array
  *
@@ -39,10 +41,10 @@ function descriptiveStatistics (numbers) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number} The maximum value of the passed array.
  */
+
 function maximum (array) {
   errorHandling(array)
-  const arrayCopy = array.slice()
-  return Math.max(...arrayCopy)
+  return Math.max(...array)
 }
 
 /**
@@ -54,13 +56,13 @@ function maximum (array) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number} Returns the mean of the passed array.
  */
+
 function mean (array) {
   errorHandling(array)
-  const arrayCopy = array.slice()
-  const sum = arrayCopy.reduce(function (acc, numbers) {
+  const sum = array.reduce(function (acc, numbers) {
     return acc + numbers
   }, 0)
-  return sum / arrayCopy.length
+  return sum / array.length
 }
 
 /**
@@ -72,10 +74,10 @@ function mean (array) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number} Returns the median of the passed array.
  */
+
 function median (array) {
   errorHandling(array)
-  const arrayCopy = array.slice()
-  const sortedArray = sortNumbers(arrayCopy)
+  const sortedArray = sortNumbers(array)
   let theMedian
   // Used the example from the lecture.
   // https://youtu.be/nlZ9PX1zfbI?t=5938
@@ -87,6 +89,7 @@ function median (array) {
   }
   return theMedian
 }
+
 /**
  * Returns the minimum of the numbers in the passed array.
  *
@@ -96,11 +99,12 @@ function median (array) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number} Returns the minimum of the passed array.
  */
+
 function minimum (array) {
   errorHandling(array)
-  const arrayCopy = array.slice()
-  return Math.min(...arrayCopy)
+  return Math.min(...array)
 }
+
 /**
  * Returns an array of the mode of the numbers in the passed array.
  *
@@ -110,25 +114,28 @@ function minimum (array) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number[]} Returns an array of the mode of the passed array.
  */
+
 function mode (array) {
   errorHandling(array)
-  const arrayCopy = array.slice()
-  const freqInArray = frequenciesInArray(arrayCopy)
+
+  const numberFrequencyInArray = frequenciesInArray(array)
   // Puts all the frequency property values in an array
-  const numberFrequency = freqInArray.map(function (number) {
+  const numberFrequency = numberFrequencyInArray.map(function (number) {
     return number.frequency
   })
   // Checks for the max value of the property 'frequency' and saves
   // all objects in an array thats equal to the max value.
-  const mostFrequentNumbers = freqInArray.filter(function (numbers) {
+  const mostFrequentNumbers = numberFrequencyInArray.filter(function (numbers) {
     return numbers.frequency === maximum(numberFrequency)
   })
   // Saves the property value of the property number in a new array.
   const modeOfArray = mostFrequentNumbers.map(function (numbers) {
     return numbers.number
   })
+
   return sortNumbers(modeOfArray)
 }
+
 /**
  * Returns the range of the numbers in the passed array.
  *
@@ -138,11 +145,12 @@ function mode (array) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number} Returns the range of the passed array.
  */
+
 function range (array) {
   errorHandling(array)
-  const arrayCopy = array.slice()
-  return (maximum(arrayCopy)) - (minimum(arrayCopy))
+  return (maximum(array)) - (minimum(array))
 }
+
 /**
  * Returns the standard deviation of the numbers in the passed array.
  *
@@ -152,33 +160,34 @@ function range (array) {
  * @throws {TypeError} The passed array contains not just numbers.
  * @returns {number} Returns the standard deviation of the passed array.
  */
+
 function standardDeviation (array) {
   errorHandling(array)
-  const arrayCopy = array.slice()
-  const meanOfArray = mean(arrayCopy)
-  // Check the range for each number in the array against the mean of the array
-  const checkRange = arrayCopy.map(function (number) {
+
+  const meanOfArray = mean(array)
+
+  const checkRange = array.map(function (number) {
     return range([number, meanOfArray])
   })
-  // Square all numbers
-  const squareNumbers = checkRange.map(function (numbers) {
+
+  const squaredNumbers = checkRange.map(function (numbers) {
     return Math.pow(numbers, 2)
   })
-  // Returns the square root of the mean of the numbers in squareNumbers
-  // This is the standardDeviation of the array
-  return Math.sqrt(mean(squareNumbers))
+
+  return Math.sqrt(mean(squaredNumbers))
 }
 
 /**
  * Throws a TypeError if the passed array is not an array
  * or if the passed array contains not just numbers.
- * Throw an Error if the passed array contains no elements.
+ * Throws an Error if the passed array contains no elements.
  *
  * @param {number[]} array An array of numbers
  * @throws {TypeError} The passed argument is not an array.
  * @throws {Error} The passed array contains no elements.
  * @throws {TypeError} The passed array contains not just numbers.
  */
+
 function errorHandling (array) {
   if (!Array.isArray(array)) {
     throw new TypeError('The passed argument is not an array.')
@@ -225,12 +234,12 @@ function frequenciesInArray (array) {
   const result = []
   let count = 0
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set#Remove_duplicate_elements_from_the_array
-  // Used this to remove duplicate values from arrayCopy
-  // to make it easier to compare it against arrayCopy
+  // Used this to remove duplicate values from array
   const setObject = new Set(arrayCopy)
   const compare = [...setObject]
+
   compare.forEach(function (number) {
-    arrayCopy.forEach(function (number2) {
+    array.forEach(function (number2) {
       if (number === number2) {
         count++
       }
